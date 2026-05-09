@@ -2,7 +2,7 @@
 
 A comprehensive short course covering the principles and training methods of Large Language Models, including Pre-training, Supervised Fine-tuning (SFT), Reinforcement Learning from Human Feedback (RLHF), and Reinforcement Learning from Verifiable Rewards (RLVR).
 
-🌐 **Live Slide**: [https://gsj49.github.io/LLM_short_course/](https://gsj49.github.io/LLM_short_course/)
+🌐 **Live Slide**: [https://huihangliu.github.io/LLM_short_course/](https://huihangliu.github.io/LLM_short_course/)
 
 ## ✨ Features
 
@@ -53,7 +53,7 @@ A comprehensive short course covering the principles and training methods of Lar
 
 ### 🌐 Live Slides
 
-Visit the live presentation: [https://noncollapse.github.io/LLM_short_course/](https://noncollapse.github.io/LLM_short_course/)
+🌐 **Live Slide**: [https://huihangliu.github.io/LLM_short_course/](https://huihangliu.github.io/LLM_short_course/)
 
 ### 🔧 Want to Contribute or Deploy Locally?
 
@@ -95,6 +95,13 @@ npm install
 
 This will install all required packages including Slidev, Vue.js, and other dependencies.
 
+If macOS blocks a native dependency during build with an error like `ERR_DLOPEN_FAILED` or `library load disallowed by system policy`, clear the quarantine metadata once:
+
+```bash
+xattr -dr com.apple.quarantine /path/to/LLM_short_course-main
+```
+
+
 #### Step 5: Local Development
 
 Start the development server:
@@ -103,7 +110,15 @@ Start the development server:
 npm run dev
 ```
 
+This serves `slides.md`.
+
 Then open [http://localhost:3030](http://localhost:3030) in your browser.
+
+If port `3030` is already in use, run Slidev directly on another port:
+
+```bash
+npm run dev -- --port 3031
+```
 
 The development server supports:
 - 🔥 Hot Module Replacement (HMR) - changes reflect instantly
@@ -112,19 +127,32 @@ The development server supports:
 
 #### Step 6: Make Your Changes
 
-Edit `slides.md` to modify the presentation content. The file uses Markdown with extended Slidev syntax for slides, layouts, and components.
+Edit `slides.md` to modify the presentation content.
+The deck uses Markdown with extended Slidev syntax for slides, layouts, and components.
 
 
 
 #### Step 7: Build for Production (Optional)
 
-Test the production build locally:
+Create a local production build:
+
+```bash
+npm run build:local
+```
+
+This writes the static site to `dist/local/`.
+
+To test that build locally, serve `dist/` with any static server, for example:
+
+```bash
+python3 -m http.server 4173 -d dist/local
+```
+
+If you are building for GitHub Pages under `/LLM_short_course/`, use:
 
 ```bash
 npm run build
 ```
-
-The built files will be in the `dist/` directory. 
 
 #### Step 8: Commit and Push Your Changes
 
@@ -169,24 +197,6 @@ llm_short_course/
 └── README.md
 ```
 
-
-## 👤 Author
-
-**Kai Ye**
-
-- 🏠 Homepage: [https://noncollapse.github.io/](https://noncollapse.github.io/)
-- 🎓 Google Scholar: [Profile](https://scholar.google.com/citations?user=a7G8Yo8AAAAJ)
-- 🤗 Hugging Face: [@Kyleyee](https://huggingface.co/Kyleyee)
-
-## 🛠️ Technology Stack
-
-- **[Slidev](https://sli.dev/)** - Presentation framework powered by Vue.js and Vite
-- **[Vue.js](https://vuejs.org/)** - Progressive JavaScript framework
-- **[Vite](https://vitejs.dev/)** - Next-generation frontend tooling
-- **[UnoCSS](https://unocss.dev/)** - Instant on-demand atomic CSS engine
-- **[KaTeX](https://katex.org/)** - Fast math typesetting for the web
-- **[Shiki](https://shiki.matsu.io/)** - Beautiful syntax highlighter
-
 ## 📖 Learn More
 
 - [Slidev Documentation](https://sli.dev/)
@@ -196,7 +206,4 @@ llm_short_course/
 ## 📝 License
 
 This project is for educational purposes.
-
-## 🙏 Acknowledgments
-
-Special thanks to the open source community and all the researchers whose work is referenced in this presentation.
+Original from [https://noncollapse.github.io/LLM_short_course](https://noncollapse.github.io/LLM_short_course)

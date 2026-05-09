@@ -1,6 +1,9 @@
 node_modules/
 dist/
+dist-en/
 .slidev/
 *.local
 .DS_Store
-slidesStatLLM/
+index.html
+backup/
+.vscode/

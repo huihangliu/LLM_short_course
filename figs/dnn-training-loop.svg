@@ -1,0 +1,44 @@
+<svg width="900" height="360" viewBox="0 0 900 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="8" y="8" width="884" height="344" rx="28" fill="#FCFDFF" stroke="#D9E3F0" stroke-width="2"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0 0L12 6L0 12V0Z" fill="#5B6B88"/>
+    </marker>
+  </defs>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="56" y="128" width="128" height="76" rx="18" fill="#DBEAFE" stroke="#2563EB" stroke-width="3"/>
+    <text x="120" y="156" text-anchor="middle" font-size="24" font-weight="700" fill="#1E3A8A">Data</text>
+    <text x="120" y="184" text-anchor="middle" font-size="18" fill="#1E3A8A">batch Bt</text>
+
+    <rect x="230" y="128" width="138" height="76" rx="18" fill="#DCFCE7" stroke="#16A34A" stroke-width="3"/>
+    <text x="299" y="156" text-anchor="middle" font-size="24" font-weight="700" fill="#166534">Forward</text>
+    <text x="299" y="184" text-anchor="middle" font-size="18" fill="#166534">y hat</text>
+
+    <rect x="414" y="128" width="128" height="76" rx="18" fill="#FDE68A" stroke="#D97706" stroke-width="3"/>
+    <text x="478" y="156" text-anchor="middle" font-size="24" font-weight="700" fill="#92400E">Loss</text>
+    <text x="478" y="184" text-anchor="middle" font-size="18" fill="#92400E">L(theta)</text>
+
+    <rect x="588" y="128" width="148" height="76" rx="18" fill="#FCE7F3" stroke="#DB2777" stroke-width="3"/>
+    <text x="662" y="156" text-anchor="middle" font-size="24" font-weight="700" fill="#9D174D">Backward</text>
+    <text x="662" y="184" text-anchor="middle" font-size="18" fill="#9D174D">gradients</text>
+
+    <rect x="782" y="128" width="72" height="76" rx="18" fill="#E9D5FF" stroke="#7C3AED" stroke-width="3"/>
+    <text x="818" y="156" text-anchor="middle" font-size="22" font-weight="700" fill="#5B21B6">Update</text>
+    <text x="818" y="184" text-anchor="middle" font-size="18" fill="#5B21B6">theta</text>
+  </g>
+
+  <g stroke="#5B6B88" stroke-width="4" marker-end="url(#arrow)" stroke-linecap="round">
+    <line x1="184" y1="166" x2="230" y2="166"/>
+    <line x1="368" y1="166" x2="414" y2="166"/>
+    <line x1="542" y1="166" x2="588" y2="166"/>
+    <line x1="736" y1="166" x2="782" y2="166"/>
+    <path d="M818 204V272H299V214"/>
+  </g>
+
+  <g font-family="Arial, sans-serif" fill="#334155">
+    <text x="558" y="302" text-anchor="middle" font-size="20" font-weight="700">repeat for many iterations</text>
+    <text x="558" y="328" text-anchor="middle" font-size="18">optimize parameters until validation performance is stable</text>
+  </g>
+</svg>

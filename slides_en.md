@@ -1,6 +1,6 @@
 ---
 theme: default
-background: https://unsplash.com/photos/chart-treemap-chart-GjBPLkTDzt4
+background: https://source.unsplash.com/collection/94734566/1920x1080
 class: text-center
 highlighter: shiki
 lineNumbers: false
@@ -42,20 +42,23 @@ code {
 }
 </style>
 
-# **大语言模型**
+# **Large Language Models & Reinforcement Learning**
 
-征信与大数据风控
-
-大语言模型 (Large Language Models)
-
-原理、训练方法和应用综合指南
-
-
+A Comprehensive Guide to Principles, Training Methods, and Applications
 
 <div class="pt-15">
-  <div class="text-2xl opacity-80 pt-1">
-    Huihang Liu (SUFE)
+  <!-- <div class="text-lg">
+    <strong>Kai Ye</strong>
   </div>
+  <div class="flex items-center justify-center gap-4 pt-2">
+  </div>
+  <div class="text-base opacity-80 pt-2">
+    LSE | Stats-Powered AI
+  </div> -->
+  <div class="text-2xl opacity-80 pt-1">
+    Modified and Presented by Huihang Liu
+  </div>
+  Shanghai University of Finance and Economics (SUFE)
 </div>
 
 <div class="pt-20">
@@ -70,45 +73,34 @@ name: toc
 routeAlias: toc
 ---
 
-# 目录
+# Table of Contents
 
-## Part 1：基础
-- DNN (深度神经网络) 介绍
-- LLM（大语言模型）简介
-- Transformer 基础与架构
+## Part 1: Foundations
+- Introduction to LLMs
+- Transformer Foundations and Architecture
 
-## Part 2：Pre-training（预训练）与 Supervised Fine-Tuning（监督微调）
-- Pre-training 方法
-- Supervised Fine-Tuning（SFT, 有监督微调）
-- Tabular Foundation Models（表格型基础模型）
+## Part 2: Pre-training and Supervised Fine-Tuning
+- Pre-training Methods
+- Supervised Fine-Tuning (SFT)
 
-## Part 3：强化学习
-- RLHF（基于人类反馈的强化学习）
-- RLVR（基于可验证奖励的强化学习）
+## Part 3: Reinforcement Learning
+- RLHF (Reinforcement Learning from Human Feedback)
+- RLVR (Reinforcement Learning with Verifiable Rewards)
 
 
 ---
-layout: two-cols-header
+layout: section
 ---
 
 # 这周发生了什么?
-统计学 (中国优选法统筹法与经济数学研究会·数据科学分会学术年会)
 
-::left:: 
+---
 
-## 出现了许多新模型
-
-- Mimo v2.5
-- DeepSeek v4
-- GPT 3.5
-- ..
-
-::right::
-
-## 模型 token 持续缺货
+# 模型 token 持续缺货
 - 千问 coding plan 缺货
 - GitHub Copilot Pro 下架
-- Claude Code 禁止 OpenClaw 调用
+- Claude Code 不允许 openclaw 调用
+
 
 
 ---
@@ -117,16 +109,11 @@ name: part-1
 routeAlias: part-1
 ---
 
-# Part 1：基础
-
-
----
-src: ./slides/dnn.md
----
+# Part 1: Foundations
 
 ---
 
-# 什么是 Large Language Models（大语言模型）？
+# What are Large Language Models?
 
 <div class="grid grid-cols-2 gap-4">
 
@@ -138,7 +125,7 @@ src: ./slides/dnn.md
 <div class="relative h-32">
 <img src="/figs/gpt.png" class="rounded w-20 absolute" style="left: 0px; top: -30px;" />
 <div class="text-center mt-8 text-2xl font-bold">
-我们甚至可以直接问 LLM！
+We can ask the LLMs themselves!
 </div>
 <img src="/figs/deepseek.png" class="rounded w-20 absolute" style="left: 780px; top: -30px;" />
 </div>
@@ -147,7 +134,7 @@ src: ./slides/dnn.md
 
 ---
 
-# LLM 发展历程
+# Evolution of LLM
 
 <div class="flex justify-center">
 <div class="w-full">
@@ -176,19 +163,19 @@ timeline
     2023 : GPT-4, Claude 3
       : Multimodal Capabilities
     2024-2026 : Open-source LLM Boom
-        : LLaMA, Qwen, GLM Series, DeepSeek, ...
+        : LLaMA, Qwen, GLM Series
 ```
 
 </div>
 </div>
 
 <div class="text-center mt-4 text-xl font-semibold">
-LLM 发展时间线
+LLM Development Timeline
 </div>
 
 ---
 
-# 2024 年每月 LLM 数量
+# Number of LLMs Per Month (2024)
 
 <div class="grid grid-cols-1 gap-6">
 
@@ -203,22 +190,22 @@ layout: section
 name: transformer-foundations
 ---
 
-# Transformer 基础
+# Transformer Foundations
 
 ---
 
-# 在 Transformer 之前：词语如何变成数字？
+# Before Transformer: How Words Become Numbers?
 
 <div class="text-center text-2xl mt-8">
-理解 Embedding（嵌入）是理解 Transformer 的<span class="text-blue-500 font-bold">关键</span>
+Understanding Embeddings is the <span class="text-blue-500 font-bold">KEY</span> to understanding Transformer
 </div>
 
 <div class="mt-18 grid grid-cols-3 gap-8">
 
 <div class="text-center">
 <div class="text-6xl mb-4">🐱</div>
-<div class="text-xl">猫</div>
-<div class="text-sm opacity-70 mt-2">人类语言</div>
+<div class="text-xl">Cat</div>
+<div class="text-sm opacity-70 mt-2">Human Language</div>
 </div>
 
 <div class="text-center flex items-center justify-center">
@@ -227,21 +214,21 @@ name: transformer-foundations
 
 <div class="text-center">
 <div class="text-4xl mb-4 font-mono">[0.2, 0.8, -0.1, ...]</div>
-<div class="text-xl">向量</div>
-<div class="text-sm opacity-70 mt-2">机器表示</div>
+<div class="text-xl">Vector</div>
+<div class="text-sm opacity-70 mt-2">Machine Understanding</div>
 </div>
 
 </div>
 
 ---
 
-# 为什么不直接使用词 ID 或 One-Hot Encoding（独热编码）？
+# Why Not Just Word IDs or One-Hot Encoding?
 
 <div class="grid grid-cols-2 gap-8 mt-8">
 
 <div>
 
-## 简单编号 ❌
+## Simple Numbering ❌
 
 ```python
 word_to_id = {
@@ -255,10 +242,10 @@ word_to_id = {
 
 <div class="mt-6">
 
-**问题：**
-- `"cat"` 比 `"dog"` 更接近 `"airplane"`，这显然不合理
-- `"dog"` 这个编号并不会比 `"airplane"` 更“重要”
-- 数字索引本身不携带语义信息
+**Problems:**
+- "cat" is closer to "airplane" than "dog"
+- "dog" may be  more important than "airplane"
+- A numeric index has no semantic meaning!
 
 </div>
 
@@ -266,7 +253,7 @@ word_to_id = {
 
 <div>
 
-## One-Hot Encoding（独热编码） ❌
+## One-Hot Encoding ❌
 
 ```python
 vocab_size = 500000
@@ -278,10 +265,10 @@ vocab_size = 500000
 "dog"→ [0, 0, 0, 0, ..., 1]
 ```
 
-**问题：**
-- 维度 = 词表大小（非常大）
-- 稀疏（99.9% 都是 0）
-- 没有相似性（彼此正交）
+**Issues:**
+-  Dimension = vocabulary size (huge!)
+-  Sparse (99.9% are zeros)
+-  No similarity (all perpendicular)
 
 
 </div>
@@ -289,37 +276,37 @@ vocab_size = 500000
 </div>
 
 <div class="mt-4 p-4 bg-green-100 rounded text-center">
-<strong>核心思想：</strong>需要一个高效、可训练、可泛化的连续空间来支持泛化能力。
+<strong>Key Idea:</strong> a efficient, trainable, and generalizable continuous space to support generalization.
 </div>
 
 ---
 
-# 从 One-Hot 到 Embedding
+# From One-Hot to Embedding
 
 <div class="grid grid-cols-2 gap-8">
 
 <div>
 
-## 我们真正需要什么 ✓
+## What We Need ✓
 
 <div class="mt-4">
 
-**语义距离：**
-- 相似词语 → 在连续空间里更接近
+**Semantic Distance:**
+- Similar words → Close in a continuous space
 
 </div>
 
 <div class="mt-8 text-center">
 <div class="text-base">
-猫 🐱 ≈ 狗 🐕 ≈ 小猫 🐈
+Cat 🐱 ≈ Dog 🐕 ≈ Kitten 🐈
 </div>
 <div class="text-sm opacity-60 mt-4">↕ (far)</div>
 <div class="text-base mt-4">
-飞机 ✈️
+Airplane ✈️
 </div>
 </div>
 
-- 高维 one-hot 向量 → 低维稠密向量
+- high-dimensional one-hot vector → low-dimensional dense vector
 
 $$ \operatorname{onehot}(i)^\top E = E[i] $$
 </div>
@@ -337,11 +324,11 @@ embedding_dim = 3584(Qwen2.5)
 "the" → [-0.5, 0.1, 0.9, ..., -0.2]
 ```
 
-**优势：**
-- ✓ 低维（例如 4096）
-- ✓ 稠密（每个值都有意义）
-- ✓ 余弦相似度能够刻画语义
-- ✓ 可学习的连续初始表示
+**Benefits:**
+- ✓ Low dimension (e.g., 4096)
+- ✓ Dense (all values meaningful)
+- ✓ Cosine similarity captures meaning
+- ✓ Learnable continuous starting representation
 
 
 
@@ -352,14 +339,14 @@ embedding_dim = 3584(Qwen2.5)
 
 ---
 
-# 语义是从哪里来的？
+# Where Does Semantic Meaning Come From?
 
 <div class="mt-4">
 
 <div class="p-6 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl border-3 border-purple-300 mb-6">
-<div class="text-2xl font-bold text-purple-800 mb-3">关键点 1：任务驱动学习</div>
+<div class="text-2xl font-bold text-purple-800 mb-3">Critical 1: Task-Driven Learning</div>
 <div class="text-lg">
- Embedding 不是手工设计出来的，而是在训练过程中为了优化任务表现<span class="font-bold text-purple-700">自动学出来的</span>。
+ Embeddings are <span class="font-bold text-purple-700">learned automatically</span> during training to optimize task performance instead of Hand-Crafted.
 </div>
 </div>
 
@@ -368,19 +355,19 @@ embedding_dim = 3584(Qwen2.5)
 <div>
 
 <div class="px-5 pt-5 pb-2.5 bg-blue-50 rounded-lg border-2 border-blue-200">
-<div class="text-lg font-bold text-blue-700 mb-2"> 💡 学习过程</div>
+<div class="text-lg font-bold text-blue-700 mb-2"> 💡 The Learning Process</div>
 <div class="text-base leading-relaxed">
 
 <div class="text-base leading-relaxed">
-  如果两个 token 在很多上下文中的行为相似：
+  If two tokens behave similarly in many contexts:
   <div class="mt-2 ml-4 text-sm opacity-90">
-    • 它们出现在相似的句子里，并与相似的词共现<br>
-    • 它们有助于预测相似的下一个 token<br>
-    • 损失函数会给它们的 Embedding 产生相似的梯度<br>
+    • They appear in similar sentences and co-occur with similar words<br>
+    • They help predict similar next tokens<br>
+    • The loss produces similar gradients for their embeddings<br>
   </div>
   <div class="mt-2">
-    → 梯度下降会把它们的向量朝相近方向更新，因此它们会变得
-    <span class="text-blue-600 font-semibold">更加相似</span>。
+    → Gradient descent updates their vectors in similar directions, so they become
+    <span class="text-blue-600 font-semibold">more similar</span>.
   </div>
 </div>
 
@@ -392,9 +379,9 @@ embedding_dim = 3584(Qwen2.5)
 <div>
 
 <div class="p-5 bg-green-50 rounded-lg border-2 border-green-200 mb-4">
-<div class="text-lg font-bold text-green-700 mb-3">🐱 示例：语义相似性</div>
+<div class="text-lg font-bold text-green-700 mb-3">🐱 Example: Semantic Similarity</div>
 <div class="text-base mb-3">
-      <code class="bg-white px-2 py-1 rounded">cat</code> 和 <code class="bg-white px-2 py-1 rounded">kitten</code> 经常出现在相似的模式中：
+      <code class="bg-white px-2 py-1 rounded">cat</code> and <code class="bg-white px-2 py-1 rounded">kitten</code> often appear in similar patterns:
     </div>
     <div class="text-sm italic opacity-80 ml-4">
       • "a ___ is a pet"<br>
@@ -402,7 +389,7 @@ embedding_dim = 3584(Qwen2.5)
       • "the ___ is sleeping"
     </div>
     <div class="text-base mt-3">
-      → 模型会把它们的 Embedding 更新到相近方向
+      → Model updates their embeddings in similar directions
 </div>
 </div>
 
@@ -416,14 +403,14 @@ embedding_dim = 3584(Qwen2.5)
 
 ---
 
-# 语义是从哪里来的？
+# Where Does Semantic Meaning Come From?
 
 <div class="mt-4">
 
 <div class="p-6 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl border-3 border-purple-300 mb-6">
-<div class="text-2xl font-bold text-purple-800 mb-3">关键点 2：Embedding 是动态的</div>
+<div class="text-2xl font-bold text-purple-800 mb-3">Critical 2: Embeddings are Dynamic</div>
 <div class="text-lg">
-在 LLM 中，经过 Transformer 层后的表示会形成 <span class="font-bold text-purple-700">Contextual Embeddings（上下文嵌入）</span>，同一个 token 在不同上下文里会变成不同的向量
+In LLMs, the representation after Transformer layers creates <span class="font-bold text-purple-700">Contextual Embeddings</span> — the same token becomes different vectors in different contexts
 </div>
 </div>
 
@@ -432,14 +419,14 @@ embedding_dim = 3584(Qwen2.5)
 <div>
 
 <div class="px-5 pt-5 pb--2 bg-blue-50 rounded-lg border-2 border-blue-200">
-<div class="text-lg font-bold text-blue-700 mb--4"> 流程</div>
+<div class="text-lg font-bold text-blue-700 mb--4"> Pipeline</div>
 <div class="text-base leading-relaxed">
 
-1. **起点**：静态查表 + 位置编码
+1. **Start**: Static lookup + positional encoding
 
-2. **变换**：反复应用 self-attention 和 MLP 层
+2. **Transform**: Apply self-attention + MLP layers repeatedly
 
-3. **结果**：每一层都会混合其他 token 的信息。最终表示 <span class="font-mono bg-white px-2 py-1 rounded">h_L</span> 依赖完整上下文。
+3. **Result**: Each layer mixes information from other tokens. Final representation <span class="font-mono bg-white px-2 py-1 rounded">h_L</span> depends on full context.
 
 
 </div>
@@ -450,15 +437,15 @@ embedding_dim = 3584(Qwen2.5)
 <div>
 
 <div class="p-5 bg-green-50 rounded-lg border-2 border-green-200 mb-4">
-<div class="text-lg font-bold text-green-700 mb-3">🏦 示例："bank"</div>
+<div class="text-lg font-bold text-green-700 mb-3">🏦 Example: "bank"</div>
 <div class="text-base mb-3">
 <div class="bg-white p-3 rounded mb-2">
 <span class="italic">"river <span class="font-bold text-blue-600">bank</span>"</span><br>
-<span class="text-sm text-gray-600">→ 向量表示“河岸”</span>
+<span class="text-sm text-gray-600">→ Vector encodes "shoreline"</span>
 </div>
 <div class="bg-white p-3 rounded">
 <span class="italic">"investment <span class="font-bold text-green-600">bank</span>"</span><br>
-<span class="text-sm text-gray-600">→ 向量表示“金融机构”</span>
+<span class="text-sm text-gray-600">→ Vector encodes "financial institution"</span>
 </div>
 </div>
 </div>
@@ -472,25 +459,25 @@ embedding_dim = 3584(Qwen2.5)
 
 ---
 
-# Tokenization（分词）：LLM 真正接收的输入
+# Tokenization: The Real Input to LLMs
 
 <div class="grid grid-cols-2 gap-8">
 
 <div>
 
-## 不是词，而是 token！ 🔤
+## Not Words, but Tokens! 🔤
 
-**为什么要做子词分词？**
+**Why subword tokenization?**
 
 <v-clicks>
 
-1. **罕见词**
+1. **Rare words**
    - "unhappiness" → "un" + "happiness"
 
-2. **拼写变化**
+2. **Spelling variations**
    - "running", "runs", "ran" → share "run"
 
-3. **缩写与符号**
+3. **Abbreviations & symbols**
    - "don't" → "don" + "'t"
    - "😊" → special token
 
@@ -500,7 +487,7 @@ embedding_dim = 3584(Qwen2.5)
 
 <div>
 
-## 示例：BPE Tokenization（BPE 分词）
+## Example: BPE Tokenization
 
 ```python
 text = "tokenization is important"
@@ -520,7 +507,7 @@ embeddings = [
 ```
 
 <div class="mt-8 p-4 bg-orange-100 rounded">
-<strong>记住：</strong>LLM 处理的是 <span class="text-red-500">token 序列</span>，而不是你直觉里的“单词”！
+<strong>Remember:</strong> LLMs process <span class="text-red-500">token sequences</span>, not "words" as you think!
 </div>
 
 </div>
@@ -530,17 +517,17 @@ embeddings = [
 ---
 
 
-# Positional Encoding（位置编码）：让 Transformer 理解顺序
+# Positional Encoding: Teaching Position to Transformers
 
 <div class="text-center text-xl mt-6">
-🤔 问题：Embedding <span class="text-red-500">不带位置信息</span>！
+🤔 Problem: Embeddings have <span class="text-red-500">no position information</span>!
 </div>
 
 <div class="grid grid-cols-2 gap-8 mt-8">
 
 <div>
 
-**相同的 Embedding，不同的含义：**
+**Same embeddings, different meanings:**
 
 ```
 "The cat chased the dog"
@@ -548,7 +535,7 @@ embeddings = [
 ```
 
 <div class="mt-4">
-没有位置信息时，这两句话在模型眼里几乎是<span class="text-red-500">一样的</span>！
+Without position info, these look <span class="text-red-500">identical</span> to the model!
 </div>
 
 <div class="mt-4 p-4 bg-blue-50 border-2 border-blue-300 rounded-lg">
@@ -562,16 +549,16 @@ $$ \mathrm{Attn}(PX) = P\,\mathrm{Attn}(X) $$
 
 <div>
 
-**解决方案：加入位置信息**
+**Solution: Add Position Information**
 
 <v-clicks>
 
-1. **原始 Transformer**：Sinusoidal PE
-   - 把位置向量加到 Embedding 上
+1. **Original Transformer**: Sinusoidal PE
+   - Add position vectors to embeddings
 
-2. **现代 LLM（Llama、GPT）**：RoPE
-   - 在 attention 中旋转 Q/K
-   - 长上下文表现更好
+2. **Modern LLMs (Llama, GPT)**: RoPE
+   - Rotate Q/K in attention
+   - Better long-context performance
 
 </v-clicks>
 
@@ -581,15 +568,15 @@ $$ \mathrm{Attn}(PX) = P\,\mathrm{Attn}(X) $$
 
 ---
 
-# 方法 1：Sinusoidal Positional Encoding（正弦位置编码）
+# Method 1: Sinusoidal Positional Encoding
 
 <div class="grid grid-cols-2 gap-6">
 
 <div>
 
-## 核心思想
+## Core Idea
 
-用正弦和余弦函数来编码位置：
+Use sine and cosine functions to encode position:
 
 $$
 \begin{aligned}
@@ -600,15 +587,15 @@ $$
 
 <div class="mt-4">
 
-- `pos`：序列中的位置（0, 1, 2, ...）
-- `i`：维度索引
-- `d`：Embedding 维度（例如 4096）
+- `pos`: position in sequence (0, 1, 2, ...)
+- `i`: dimension index
+- `d`: embedding dimension (e.g., 4096)
 
 <div class="mt-2">
 
-- **高频**维度变化**更快**，帮助模型区分邻近位置 
+- **High-frequency** dimensions change **rapidly**, helping the model distinguish nearby positions 
 
-- **低频**维度变化**更慢**，提供长距离位置信号 
+- **Low-frequency** dimensions vary **slowly**, providing long-range positional signals 
 </div>
 </div>
 
@@ -616,11 +603,11 @@ $$
 
 <div>
 
-## 如何使用
+## How to Use
 
 <div class="mt-4">
 
-**很简单：逐元素相加即可！**
+**Simple: Just add them element-wise!**
 
 $$
 \boxed{\text{Final Vector} = \text{Embedding} + \text{Position Encoding}}
@@ -707,7 +694,7 @@ $$
 </style>
 
 <div class="text-center text-lg font-bold mb-0">
-位置 1 处的 token "cat"
+Token "cat" at Position 1
 </div>
 
 <div v-show="$slidev.nav.clicks < 3">
@@ -726,7 +713,7 @@ $$
 
   <!-- Step 2: Show Position Encoding (visible on click 2, hidden on click 3+) -->
   <div v-click="2" class="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg mt-2">
-    <div class="label" style="color: #f093fb;">🔴 Position Encoding（pos=1）</div>
+    <div class="label" style="color: #f093fb;">🔴 Position Encoding (pos=1)</div>
     <div class="vector-row">
       <div class="vector-box pos-box">0.8</div>
       <div class="vector-box pos-box">0.5</div>
@@ -757,7 +744,7 @@ $$
 
   <!-- Step 3b: Show Final Result (fade in after merge) -->
   <div v-show="$slidev.nav.clicks >= 3" class="absolute top-0 left-0 right-0 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg result-fade">
-    <div class="label" style="color: #4facfe;">🔵 最终结果（带位置信息）</div>
+    <div class="label" style="color: #4facfe;">🔵 Final Result (Position-aware)</div>
     <div class="vector-row">
       <div class="vector-box result-box">1.1</div>
       <div class="vector-box result-box">0.1</div>
@@ -767,7 +754,7 @@ $$
       <div class="vector-box result-box">0.5</div>
     </div>
     <div class="mt-3 text-center text-xs text-gray-600">
-      ✨ 现在每个 token 都带上了独特的位置信息！
+      ✨ Now each token has unique position information embedded!
     </div>
   </div>
 </div>
@@ -780,28 +767,28 @@ $$
 
 ---
 
-# 方法 2：RoPE（Rotary Positional Embedding，旋转位置嵌入）
+# Method 2: RoPE (Rotary Positional Embedding)
 
 <div class="grid grid-cols-2 gap-6">
 
 <div>
 
-## 为什么选择 RoPE？ 🔄
+## Why RoPE? 🔄
 
-**加性 PE 的问题：**
-- 位置信息可能会在层间逐渐“衰减”
-- 对超长上下文不够理想
+**Problem with additive PE:**
+- Position info can "fade" through layers
+- Not ideal for very long contexts
 
-**RoPE 的做法：**
-- 不把位置直接加到 Embedding 上
-- 而是在 attention 中<span class="text-blue-500">旋转 Q 和 K</span>
-- 位置信息编码在旋转角度里
+**RoPE Solution:**
+- Don't add to embeddings
+- Instead, <span class="text-blue-500">rotate Q and K</span> in attention
+- Position encoded in the rotation angle
 
 </div>
 
 <div>
 
-## 核心公式
+## Core Formula
 
 $$
 \begin{aligned}
@@ -810,7 +797,7 @@ k' &= R(pos) \cdot k
 \end{aligned}
 $$
 
-$R(pos)$ 是一个由 sin/cos 构造出的旋转矩阵：
+Where $R(pos)$ is a rotation matrix built from sin/cos:
 
 $$
 R(pos) = \begin{bmatrix}
@@ -819,7 +806,7 @@ R(pos) = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-对每两个维度应用一次（每一对做一次 2D 旋转）
+Applied to every 2 dimensions (2D rotation for each pair)
 
 </div>
 
@@ -827,10 +814,10 @@ $$
 
 ---
 
-# RoPE：旋转位置嵌入 🌀
+# RoPE: Rotary Position Embedding 🌀
 
 <div class="text-center text-xl opacity-80 mb-8">
-通过<b>旋转</b>来编码位置，是一种非常优雅的数学构造
+Encode position through <b>rotation</b> - a mathematically elegant approach
 </div>
 
 <div class="grid grid-cols-2 gap-8">
@@ -841,19 +828,19 @@ $$
 <div class="space-y-4">
 
 <div class="p-4 rounded-lg bg-amber-50 border-2 border-amber-300">
-<div class="font-bold text-amber-900 mb-3 text-lg">1️⃣ 维度两两成对</div>
+<div class="font-bold text-amber-900 mb-3 text-lg">1️⃣ Pair Dimensions</div>
 <div class="font-mono text-center text-base bg-white/70 rounded p-2">
 [q₀, q₁], [q₂, q₃], [q₄, q₅], ...
 </div>
 <div class="text-sm mt-2 opacity-80">
-把相邻维度分成若干 2D 配对
+Group adjacent dimensions into 2D pairs
 </div>
 </div>
 
 <div class="p-4 rounded-lg bg-green-50 border-2 border-green-300">
-<div class="font-bold text-green-900 mb-3 text-lg">2️⃣ 施加旋转</div>
+<div class="font-bold text-green-900 mb-3 text-lg">2️⃣ Apply Rotation</div>
 <div class="text-sm mb-2">
-对于位置 <span class="font-mono bg-white px-2 py-1 rounded">m</span>，用角度 <span class="font-mono bg-white px-2 py-1 rounded">θ·m</span> 旋转每一对维度：
+For position <span class="font-mono bg-white px-2 py-1 rounded">m</span>, rotate each pair by angle <span class="font-mono bg-white px-2 py-1 rounded">θ·m</span>:
 </div>
 
 $$
@@ -876,9 +863,9 @@ $$
 <!-- RIGHT: Visual & Benefits -->
 
 <div class="p-4 rounded-lg bg-purple-50 border-2 border-purple-300 mb-4 mt-0">
-<div class="font-bold text-purple-900 mb-3 text-lg"> 注意力的妙处 ✨</div>
+<div class="font-bold text-purple-900 mb-3 text-lg"> Attention Magic ✨</div>
 <div class="text-sm leading-relaxed mb-3">
-Q 和 K 都旋转后，注意力分数 <span class="font-mono bg-white px-2 py-1 rounded">Q·Kᵀ</span> 只与<b>相对距离（m-n）</b>有关
+After rotating both Q and K, the attention score <span class="font-mono bg-white px-2 py-1 rounded">Q·Kᵀ</span> depends on <b>relative distance (m-n)</b>
 </div>
 
 $$
@@ -888,23 +875,23 @@ $$
 </div>
 <div class="p-4 rounded-lg bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-300">
 
-<div class="font-bold text-indigo-900 mb-3 text-center">🎯 关键优势</div>
+<div class="font-bold text-indigo-900 mb-3 text-center">🎯 Key Advantages</div>
 <div class="space-y-2 text-sm">
 <div class="flex items-start">
 <div class="mr-2">✅</div>
-<div><b>无需额外参数</b>，只做旋转</div>
+<div><b>No extra parameters</b> - just rotation</div>
 </div>
 <div class="flex items-start">
 <div class="mr-2">✅</div>
-<div><b>相对位置</b>，编码方式自然</div>
+<div><b>Relative position</b> - natural encoding</div>
 </div>
 <div class="flex items-start">
 <div class="mr-2">✅</div>
-<div><b>高效</b>，只需简单矩阵乘法</div>
+<div><b>Efficient</b> - simple matrix multiplication</div>
 </div>
 <div class="flex items-start">
 <div class="mr-2">✅</div>
-<div><b>具备外推能力</b>，可处理未见过的长度</div>
+<div><b>Extrapolation</b> - handles unseen lengths</div>
 </div>
 </div>
 </div>
@@ -919,37 +906,36 @@ layout: section
 name: transformer-architecture
 ---
 
-# Transformer 架构
+# Transformer Architecture
 
 ---
 
-# Transformer：整体架构
+# Transformer: The Architecture
 
 <div class="grid grid-cols-2 gap-4">
 
 <div>
 
-## 核心组件
+## Core Components
 
 <div class="mb-2">
   <a href="https://poloclub.github.io/transformer-explainer/" target="_blank" class="inline-block px-7 py-1 rounded bg-blue-600 text-white text-sm">
-    Transformer 可视化: 
-    https://poloclub.github.io/transformer-explainer/
+    Transformer Explainer Visualization
   </a>
 </div>
 
 - **Positional Encoding**
-  <div class="ml-4  mt--4 text-m">• 保留序列顺序信息</div>
+  <div class="ml-4  mt--4 text-m">• Preserves sequence order information</div>
 
-- **Self-Attention Mechanism（自注意力机制）**
-  <div class="ml-4  mt--4 text-m">• 捕捉长距离依赖</div>
-  <div class="ml-4  mt--1 text-m">• 具备很高的并行计算效率</div>
+- **Self-Attention Mechanism**
+  <div class="ml-4  mt--4 text-m">• Captures long-range dependencies</div>
+  <div class="ml-4  mt--1 text-m">• High parallel computation efficiency</div>
 
-- **Multi-Head Attention（多头注意力）**
-  <div class="ml-4  mt--4 text-m">• 从多个子空间学习表示</div>
+- **Multi-Head Attention**
+  <div class="ml-4  mt--4 text-m">•  Learns representations from multiple subspaces</div>
 
-- **Feed-Forward Neural Network（前馈神经网络）**
-  <div class="ml-4  mt--4 text-m">• 提供非线性变换</div>
+- **Feed-Forward Neural Network**
+  <div class="ml-4  mt--4 text-m">• Non-linear transformations</div>
 
 </div>
 
@@ -1119,13 +1105,13 @@ $$
 
 <div class="grid grid-cols-3 gap-4 mt-6">
   <div class="qkv-btn q-btn text-center" @click="showModal = 'Q'">
-    Q - Query（查询）
+    Q - Query
   </div>
   <div class="qkv-btn k-btn text-center" @click="showModal = 'K'">
-    K - Key（键）
+    K - Key
   </div>
   <div class="qkv-btn v-btn text-center" @click="showModal = 'V'">
-    V - Value（值）
+    V - Value
   </div>
 </div>
 
@@ -1135,17 +1121,17 @@ $$
     <button class="qkv-close-btn" @click="showModal = ''">×</button>
     
 <div style="background: #f0f4ff; padding: 20px; border-radius: 12px; margin-top: 24px;">
-<h4 style="color: #667eea; font-size: 20px; margin-bottom: 12px;">💡 Query 的作用</h4>
+<h4 style="color: #667eea; font-size: 20px; margin-bottom: 12px;">💡 Role of Query</h4>
 
-- **作用**：表示“我在寻找什么信息？”
-- **计算**：`Q = X @ W_Q`（输入 × Query 权重）
-- **含义**：每个 token 都会生成自己的“问题”，去和其他 token 的 Key 匹配
+- **Purpose**: Represents "what information am I looking for?"
+- **Computation**: `Q = X @ W_Q` (Input × Query Weights)
+- **Meaning**: Each token generates its own "question" to match with other tokens' Keys
 
 </div>
 
 <div class="matrix-diagram">
   <div>
-    <div class="matrix-label" style="color: #4facfe;">输入 X</div>
+    <div class="matrix-label" style="color: #4facfe;">Input X</div>
     <div class="matrix-box matrix-input">
       <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
       <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
@@ -1192,17 +1178,17 @@ $$
     <button class="qkv-close-btn" @click="showModal = ''">×</button>
     
 <div style="background: #fff0f5; padding: 20px; border-radius: 12px; margin-top: 24px;">
-<h4 style="color: #f093fb; font-size: 20px; margin-bottom: 12px;">💡 Key 的作用</h4>
+<h4 style="color: #f093fb; font-size: 20px; margin-bottom: 12px;">💡 Role of Key</h4>
 
-- **作用**：表示“我能提供什么信息？”
-- **计算**：`K = X @ W_K`（输入 × Key 权重）
-- **含义**：它像是每个 token 的“标签”，供其他 token 的 Query 来检索
+- **Purpose**: Represents "what information can I provide"
+- **Computation**: `K = X @ W_K` (Input × Key Weights)
+- **Meaning**: Each token's "label", used to be retrieved by other tokens' Queries
 
 </div>
 
 <div class="matrix-diagram">
   <div>
-    <div class="matrix-label" style="color: #4facfe;">输入 X</div>
+    <div class="matrix-label" style="color: #4facfe;">Input X</div>
     <div class="matrix-box matrix-input">
       <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
       <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
@@ -1249,17 +1235,17 @@ $$
     <button class="qkv-close-btn" @click="showModal = ''">×</button>
     
 <div style="background: #f3e5f5; padding: 20px; border-radius: 12px; margin-top: 24px;">
-<h4 style="color: #9c27b0; font-size: 20px; margin-bottom: 12px;">💡 Value 的作用</h4>
+<h4 style="color: #9c27b0; font-size: 20px; margin-bottom: 12px;">💡 Role of Value</h4>
 
-- **作用**：表示“我真正携带的内容/信息”
-- **计算**：`V = X @ W_V`（输入 × Value 权重）
-- **含义**：它是真正被传递和聚合的信息，会按照注意力权重做加权求和
+- **Purpose**: Represents "my actual content/information"
+- **Computation**: `V = X @ W_V` (Input × Value Weights)
+- **Meaning**: The actual information being passed and aggregated, weighted sum based on attention weights
 
 </div>
 
 <div class="matrix-diagram">
   <div>
-    <div class="matrix-label" style="color: #4facfe;">输入 X</div>
+    <div class="matrix-label" style="color: #4facfe;">Input X</div>
     <div class="matrix-box matrix-input">
       <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
       <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
@@ -1306,39 +1292,39 @@ $$
 
 ---
 
-# 为什么需要 Attention（注意力）？
+# Why we need attention?
 
 <div class="text-base leading-relaxed">
 
-考虑这个句子："*The animal didn't cross the street because it was too tired*"
+Consider the sentence: "*The animal didn't cross the street because it was too tired*"
 
 <div class="mt-4 p-4 bg-blue-50 rounded">
 
-在这个句子里，**it** 是一个代词。它指代的到底是什么？
+In this sentence, **it** is a pronoun. What does it refer to?
 
-- 它指的是 **animal**，还是 **street**？
-- 这个问题对人类来说很简单，但对模型却没那么容易
+- Does it refer to **animal** or **street**?
+- This question is simple for humans, but not so easy for models
 
 </div>
 <div class="mt-6 grid grid-cols-2 gap-6">
 
 <div>
 
-**RNN（循环神经网络）的方法**
+**RNN's Approach**
 
-- 处理当前词时，要依赖前面词的隐藏状态
-- 隐藏状态里携带了前文的信息
-- 顺序计算，信息像链条一样逐步传递
+- When processing a word, considers the hidden state from previous words
+- Hidden state contains information from preceding words
+- Sequential processing, chain-like information flow
 
 </div>
 
 <div>
 
-**Self-Attention 的优势**
+**Self Attention's Advantage**
 
-- 当前词可以**直接关注**句子中所有相关词
-- 可以并行计算，直接建模长距离依赖
-- 下面的 “it” 例子会更直观地展示这一点
+- Current word **directly attends** to all relevant words in the sentence
+- Parallel processing, direct long-range dependencies
+- As illustrated in the "it" example below
 
 </div>
 
@@ -1348,7 +1334,7 @@ $$
 
 ---
 
-# Self-Attention（自注意力）计算
+# Self-Attention Computation
 
 <div class="text-center mb-4 text-2xl">
 $$
@@ -1391,7 +1377,7 @@ $$
 
 <!-- Attention Weights -->
 <div class="flex flex-col items-center">
-<div class="text-green-600 font-bold text-sm mb-2">注意力分数（n×n）</div>
+<div class="text-green-600 font-bold text-sm mb-2">Attention score(n×n)</div>
 <div class="grid grid-cols-4 gap-1">
 <div class="w-8 h-8 bg-green-100 border-2 border-green-400"></div>
 <div class="w-8 h-8 bg-green-200 border-2 border-green-400"></div>
@@ -1466,11 +1452,11 @@ $$
 
 <div>
 
-- **把所有 attention head 的输出拼接起来**
+- **Concatenate all the attention heads**
 
-- **再与权重矩阵 $W^0$ 相乘**
+- **Multiply with a weight matric $W^0$**
 
-- **最终输出 $Z$ 汇聚了所有 attention head 的信息**
+- **The out put $Z$ captures information from all the attention head**
 
 
 
@@ -1517,27 +1503,27 @@ $$
 
 <!-- Final output Z: 4×5 -->
 <div class="flex flex-col items-center gap-2">
-<div class="text-sm font-semibold mb-1">输出 Z</div>
+<div class="text-sm font-semibold mb-1">Output Z</div>
 <div class="grid grid-cols-5 gap-0.5">
 <div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div>
 <div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div>
 <div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div>
 <div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div><div class="w-7 h-7 bg-pink-300 border-2 border-pink-400"></div>
 </div>
-<div class="text-xs">（n×d），与输入 X 的形状相同</div>
+<div class="text-xs">(nxd) which is same as the input X</div>
 </div>
 
 </div>
 
 ---
 
-# Multi-Head Attention：不同 Head 在看什么
+# Multi-Head Attention: Visualizing Different Heads
 
 <div class="mt-4">
 
-**理解了 Multi-Head Attention 之后，我们回到前面那个 “it” 的例子，看看不同 attention head 分别在关注什么。**
+**After learning multi-head attention, let's revisit the "it" example we mentioned earlier and see what different attention heads focus on.**
 
-**绿色和橙色分别代表两个不同的 attention head：**
+**The green and orange colors represent two different attention heads:**
 
 </div>
 
@@ -1545,7 +1531,7 @@ $$
 
 <!-- Top row: Input tokens (horizontal) -->
 <div class="flex flex-col gap-3">
-<div class="text-sm font-semibold text-center mb-2">输入 Tokens</div>
+<div class="text-sm font-semibold text-center mb-2">Input Tokens</div>
 <div class="flex gap-2">
 <div class="px-3 py-2 bg-orange-300 border-2 border-orange-400 rounded text-xs">The_</div>
 <div class="px-3 py-2 bg-orange-300 border-2 border-orange-400 rounded text-xs font-semibold">animal_</div>
@@ -1607,22 +1593,22 @@ $$
 <div class="flex gap-8 justify-center">
 <div class="flex items-center gap-2">
 <div class="w-4 h-4 bg-orange-300 border-2 border-orange-500"></div>
-<span><b>橙色 Head：</b>"it" 关注 "The animal"</span>
+<span><b>Orange Head:</b> "it" attends to "The animal"</span>
 </div>
 <div class="flex items-center gap-2">
 <div class="w-4 h-4 bg-green-400 border-2 border-green-600"></div>
-<span><b>绿色 Head：</b>"it" 关注 "tired"</span>
+<span><b>Green Head:</b> "it" attends to "tired"</span>
 </div>
 </div>
 </div>
 
 ---
 
-# Feed-Forward Networks（前馈网络）与 Add & Norm
+# Feed-Forward Networks and Add&Norm
 
 <div class="mt-6">
 
-**经过 Multi-Head Attention 之后，每个 token 的表示还会继续经过：**
+**After Multi-Head Attention, each token representation passes through:**
 
 </div>
 
@@ -1630,34 +1616,34 @@ $$
 
 <!-- Feed-Forward Network -->
 <div class="flex flex-col gap-4">
-<div class="text-lg font-bold text-blue-600">1. Feed-Forward Network（FFN）</div>
+<div class="text-lg font-bold text-blue-600">1. Feed-Forward Network (FFN)</div>
 
 <div class="bg-blue-50 p-4 rounded">
 
-**逐位置独立应用的两层神经网络：**
+**Two-layer neural network applied to each position independently:**
 
 $$
 \text{FFN}(x) = \text{ReLU}(xW_1 + b_1)W_2 + b_2
 $$
 
-- **第一层**：升维（例如 512 → 2048）
-- **第二层**：再投影回去（例如 2048 → 512）
+- **First layer**: Expands dimension (e.g., 512 → 2048)
+- **Second layer**: Projects back (e.g., 2048 → 512)
 
 </div>
 
 <div class="text-sm mt-2">
-💡 作用：引入非线性，并学习更复杂的模式
+💡 Purpose: Add non-linearity and learn complex patterns
 </div>
 
 </div>
 
 <!-- Add & Norm -->
 <div class="flex flex-col gap-4">
-<div class="text-lg font-bold text-green-600">2. Add & Norm（残差连接 + Layer Norm）</div>
+<div class="text-lg font-bold text-green-600">2. Add & Norm (Residual + Layer Norm)</div>
 
 <div class="bg-green-50 p-4 rounded">
 
-**残差连接 + 层归一化：**
+**Residual Connection + Layer Normalization:**
 
 $$
 \text{LayerNorm}(x + \text{Sublayer}(x))
@@ -1665,9 +1651,9 @@ $$
 
 <div class="mt-3">
 
-**每个 Transformer block 中会用两次：**
-- 围绕 Multi-Head Attention
-- 围绕 Feed-Forward Network
+**Two applications in each transformer block:**
+- Around Multi-Head Attention
+- Around Feed-Forward Network
 
 </div>
 
@@ -1680,7 +1666,7 @@ $$
 </div>
 
 <div class="text-sm mt-2">
-💡 作用：帮助深层网络中的梯度传播，并稳定训练
+💡 Purpose: Helps gradient flow in deep networks and Stabilizes training
 </div>
 
 </div>
@@ -1689,11 +1675,11 @@ $$
 
 ---
 
-# Encoder 和 Decoder
+# Encoder and Decoder
 
 <div class="mt-4 text-sm">
 
-**原始 Transformer 有两个主要组件：**
+**The original Transformer has two main components:**
 
 </div>
 
@@ -1705,11 +1691,11 @@ $$
 
 <div class="bg-blue-50 p-4 rounded">
 
-**作用**：理解输入序列
+**Purpose**: Understanding input sequence
 
-**关键特征：**
-- **Bidirectional** attention（可以看到所有 token）
-- 适合：理解、分类
+**Key Features**:
+- **Bidirectional** attention (can see all tokens)
+- Good for: Understanding, classification
 
 </div>
 
@@ -1722,11 +1708,11 @@ $$
 
 <div class="bg-green-50 p-4 rounded">
 
-**作用**：生成输出序列 
+**Purpose**: Generate output sequence 
 
-**关键特征：**
-- **Unidirectional**（带 mask 的单向）attention
-- 适合：生成、翻译
+**Key Features**:
+- **Unidirectional** (masked) attention
+- Good for: Generation, translation
 
 </div>
 
@@ -1736,15 +1722,15 @@ $$
 
 <div class="mt-2 p-4 bg-gray-100 rounded">
 
-**二者都由很多个 Transformer Block 组成：**
+**Both contain many Transformer Blocks:**
 
-输入 → **Multi-Head Attention** → Add & Norm → **Feed-Forward** → Add & Norm → 输出
+Input → **Multi-Head Attention** → Add & Norm → **Feed-Forward** → Add & Norm → Output
 
 </div>
 
 ---
 
-# Next Token Prediction（下一词预测）
+# Next Token Prediction
 
 <div class="text-sm leading-relaxed">
 
@@ -1800,14 +1786,14 @@ $X = \text{append}(X, \text{token}_{t+1})$
 
 <div class="mt-6 p-3 bg-blue-50 border-2 border-blue-200 rounded-lg text-xs leading-relaxed">
 
-### 关键点：
+### Key Points:
 
 <div class="mt-4">
 
-- **Causal Masking**：只能关注 $1:t$ 的 token
-- **Autoregressive**：生成出的 token 会成为下一步输入
-- **Residual Connections**：每层后面都有 Add & Norm
-- **Stopping Criterion**：当生成 EOS token 时结束
+- **Causal Masking**: Only attend to tokens $1:t$
+- **Autoregressive**: Generated token → next input
+- **Residual Connections**: Add & Norm after each layer
+- **Stopping Criterion**: Generation ends when EOS token is produced
 
 </div>
 
@@ -1825,13 +1811,13 @@ name: part-2
 routeAlias: part-2
 ---
 
-# Part 2：Pre-training 与 Supervised Fine-Tuning
+# Part 2: Pre-training and Supervised Fine-Tuning
 
 
 
 ---
 
-# Autoregressive（自回归）下一词预测
+# Autoregressive next-token prediction
 <style>
 @keyframes flowInput {
   0% {
@@ -1914,7 +1900,7 @@ routeAlias: part-2
 <div class="flex items-center gap-8">
 
 <div class="text-center">
-<div class="text-lg font-semibold mb-2">输入序列</div>
+<div class="text-lg font-semibold mb-2">Input Sequence</div>
 <div class="p-4 bg-gray-100 rounded-lg">
 <div class="flex gap-2">
 <span class="px-3 py-2 bg-blue-200 rounded text-sm">The</span>
@@ -1938,7 +1924,7 @@ routeAlias: part-2
 <div class="text-5xl text-gray-400"></div>
 
 <div class="text-center">
-<div class="text-lg font-semibold mb-2">概率分布</div>
+<div class="text-lg font-semibold mb-2">Probability Distribution</div>
 <div class="p-4 bg-gray-100 rounded-lg text-sm w-64">
 <div class="flex items-center gap-2 mb-2">
 <span class="w-16 text-right font-semibold">mat:</span>
@@ -2012,30 +1998,30 @@ routeAlias: part-2
 
 <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center">
 <p class="text-lg text-gray-600 italic">
-你可以先把 Transformer 看成一个黑盒：给它一个序列，<br>
-它就会告诉你词表里每个 token 成为下一个词的概率。
+Just view Transformer as a box: give it a sequence, <br>
+it tells you the probability of each token in the vocabulary being next.
 </p>
 </div>
 
 ---
 
-# 训练目标：下一词预测
+# Training Objective: Next-Token Prediction
 
 <div class="grid grid-cols-2 gap-8">
 
 <div>
 
-### 训练数据：
+### Training Data:
 
 $\mathcal{D} = \{x_i\}_{i=1}^N$  
 
-其中每个 $x_i = (x_1, \ldots, x_T)$
+Each $x_i = (x_1, \ldots, x_T)$
 
 </div>
 
 <div>
 
-### 模型输出：
+### Model Output:
 $$P_\theta(x_{1:T}) = \prod_{t=1}^{T} P_\theta(x_t \mid x_{<t})$$
 
 </div>
@@ -2044,27 +2030,27 @@ $$P_\theta(x_{1:T}) = \prod_{t=1}^{T} P_\theta(x_t \mid x_{<t})$$
 
 <div class="mt-7 p-5 pt-4 pb-0 bg-gradient-to-r from-blue-50 to-purple-50 border-5 border-blue-300 rounded-lg">
 
-### 训练目标
+### Training Goal
 $$\max_\theta \prod_{t=1}^{T} P_\theta(x_t \mid x_{<t})$$
-我们希望模型在位置 $t$ 上，尽可能把更高概率分配给正确 token $x_t$
+We want the model to assign as much probability as possible to the correct token $x_t$ at position $t$
 
 </div>
 
 ---
 
-# Cross-Entropy Loss（交叉熵损失）
+# Cross-Entropy Loss
 
 <div class="grid grid-cols-2 gap-6">
 
 <div>
 
-### 定义
+### Definitions
 
-**真实分布** $q_t$：one-hot 向量  
-- 在正确 token $x_t$ 位置上取 1
-- 其余位置取 0
+**True distribution** $q_t$: one-hot vector  
+- 1 at correct token $x_t$
+- 0 elsewhere
 
-**模型分布** $p_t$：词表 $|V|$ 上的 softmax 输出
+**Model distribution** $p_t$: softmax output over vocabulary $|V|$
 
 </div>
 
@@ -2072,7 +2058,7 @@ $$\max_\theta \prod_{t=1}^{T} P_\theta(x_t \mid x_{<t})$$
 
 ### 
 
-在位置 $t$：
+At position $t$:
 
 <div class="text-sm mt--3">
 
@@ -2080,7 +2066,7 @@ $$H(q_t, p_t) = -\sum_{v=1}^{|V|} q_t(v) \log p_t(v)$$
 
 </div>
 
-由于 $q_t$ 是 one-hot：
+Since $q_t$ is one-hot:
 
 <div class="text-sm mt--3">
 
@@ -2088,7 +2074,7 @@ $$H(q_t, p_t) = -\log p_t(x_t)$$
 
 </div>
 
-这也就是 **Negative Log-Likelihood（NLL，负对数似然）**
+This is also the **Negative Log-Likelihood (NLL)**
 
 </div>
 
@@ -2096,7 +2082,7 @@ $$H(q_t, p_t) = -\log p_t(x_t)$$
 
 <div class="mt--3 px-4 pt-4 pb-0 bg-blue-50 border-5 border-blue-200 rounded-lg">
 
-### 整个序列的损失
+### Loss for Entire Sequence
 
 <div class="text-m">
 
@@ -2104,53 +2090,53 @@ $$\mathcal{L}(\theta) = \sum_{t=1}^{T} -\log p_\theta(x_t \mid x_{<t})$$
 
 </div>
 
-实际训练时，我们通常会对 **batch** 和 **tokens** 同时取平均，得到训练损失
+In practice: average over **batch** and over **tokens** to get the training loss
 </div>
 
 ---
 
-# Pre-training = 大规模语料上的下一词预测
+# Pre-training = Next-Token Prediction on Massive Corpora
 
-设预训练语料为
+Let the pre-training corpus be
 $$
 \mathcal D_{\text{pre}}=\{x^{(i)}\}_{i=1}^{N},\qquad x^{(i)}=(x^{(i)}_1,\ldots,x^{(i)}_{T_i}).
 $$
 
-模型在所有 token 上做下一词预测训练：
+The model is trained with next-token prediction over all tokens:
 $$
 \max_{\theta}\;\mathbb{E}_{x\sim \mathcal D_{\text{pre}}}\left[\sum_{t=1}^{T}\log p_{\theta}(x_t\mid x_{<t})\right].
 $$
 
-等价的损失形式为：
+Equivalent loss form:
 $$
 \mathcal L_{\text{pre}}(\theta)
 =-\mathbb{E}_{x\sim \mathcal D_{\text{pre}}}\left[\sum_{t=1}^{T}\log p_{\theta}(x_t\mid x_{<t})\right].
 $$
 
-- 本质上仍然是交叉熵下一词预测。
-- 真正的区别在于规模：语料极大，而且来源多样、无需标注。
+- Same objective as cross-entropy next-token prediction.
+- The key difference is scale: very large and diverse unlabeled corpora.
 
 ---
 
-# 从 Pre-training 到 foundation models（基础模型）
+# From Pre-training to Foundation Models
 
 <div class="text-m leading-relaxed">
-经过大规模预训练后，模型通常会获得广泛且可迁移的能力，
-包括语言理解、生成和通用推理。这样的预训练骨干模型通常被称为
-<b>foundation models</b>。
+After large-scale pre-training, a model usually acquires broad, transferable capabilities
+(language understanding, generation, and general reasoning). Such pre-trained backbones are commonly called
+<b>foundation models</b>.
 </div>
 
 <div class="grid grid-cols-2 gap-6 mt-4 text-m leading-relaxed">
   <div>
-    <div class="font-semibold mb-2">“foundation model” 的含义</div>
+    <div class="font-semibold mb-2">What “foundation model” means</div>
     <ul>
-      <li>先在海量、多样的语料上训练，再做特定任务适配。</li>
-      <li>可以作为指令微调、对齐和下游任务的可复用底座。</li>
-      <li>可以通过 SFT、RLHF/RLVR 或领域微调继续适配。</li>
+      <li>Trained on massive, diverse corpora before task-specific adaptation.</li>
+      <li>Serves as a reusable base for instruction tuning, alignment, and downstream tasks.</li>
+      <li>Can be adapted via SFT, RLHF/RLVR, or domain-specific fine-tuning.</li>
     </ul>
   </div>
   <div>
-    <div class="font-semibold mb-2">示例（开源模型）</div>
+    <div class="font-semibold mb-2">Examples (open models)</div>
     <ul>
       <li><b>Qwen2.5</b> base models (e.g., 7B/14B/32B/72B).</li>
       <li><b>Llama 3.1</b> base models.</li>
@@ -2162,138 +2148,138 @@ $$
 
 ---
 
-# 为什么表格数据值得单独讨论？
+# Why Is Tabular Data Worth a Separate Discussion?
 
-### 标准任务形式
+### Standard task form
 
 $$
 \mathcal D_{\text{train}}=\{(x_i,y_i)\}_{i=1}^{n},\qquad x_i=(x_{i1},\ldots,x_{id})
 $$
 
-- 每一行是一个样本，每一列是一个特征。
-- $x_{ij}$ 可能是数值、类别、二值变量，也可能缺失。
-- 目标通常是 classification / regression，而不是自由生成。
+- Each row is a sample; each column is a feature.
+- $x_{ij}$ may be numeric, categorical, binary, or missing.
+- The goal is usually classification or regression, not free-form generation.
 
-### 它和文本任务的关键差异
+### Key differences from text
 
-- 列是异构的：不同列的统计分布、尺度和语义差异很大。
-- 很多真实任务是小样本：常见只有几十到几千个标注样本。
-- 行顺序通常不重要，但列语义和列之间的交互非常重要。
-- 用户更关心“预测是否正确”，而不是“表述是否自然”。
-
----
-
-# 为什么“文本上的大模型经验”不能直接照搬？
-
-### 三层根本差异
-
-- **规模假设不同**：文本世界有海量自然语料；表格任务往往是很多小数据集，而不是一个统一大语料。
-- **结构假设不同**：文本是顺序序列；表格更强调列语义、特征类型、缺失值和跨列关系。
-- **目标假设不同**：文本建模常优化生成质量；表格建模更直接面向分类、回归与 calibrated prediction。
-
-### 因此
-
-- tabular foundation model 不能只是“把表格变成一句英文，再交给通用 LLM”。
-- 它更需要思考：怎样把 **任务先验**、**小样本学习** 和 **结构归纳偏置** 真正写进模型。
+- Columns are heterogeneous: different scales, distributions, and semantics.
+- Many real tasks are small-data: often only tens to thousands of labeled rows.
+- Row order is usually unimportant, but column semantics matter a lot.
+- Users care more about correctness and calibration than natural fluency.
 
 ---
 
-# 已有方法 / 策略：三条主线
+# Why Can’t We Directly Reuse “Text LLM” Recipes?
 
-### 路线一：表格转文本
+### Three fundamental differences
 
-- 把列名、特征值和任务说明序列化为 prompt，再调用通用 LLM。
-- 代表思路：prompting、instruction tuning、TabLLM 风格方法。
+- **Different scale assumption**: text has massive raw corpora; tabular learning often consists of many small labeled datasets.
+- **Different structural assumption**: text is sequential; tables emphasize column semantics, feature types, missing values, and cross-feature interactions.
+- **Different objective assumption**: text models often optimize generation quality; tabular models optimize prediction quality on supervised tasks.
 
-### 路线二：专用表格 Transformer
+### Therefore
 
-- 为列嵌入、类别编码、行间交互单独设计架构，而不是完全复用文本模型。
-- 代表思路：TabTransformer、SAINT、FT-Transformer。
-
-### 路线三：任务分布预训练
-
-- 不只学习一张表，而是先在大量任务分布上学习“怎样做表格预测”。
-- 代表思路：meta-learning / amortized Bayesian inference / TabPFN。
+- A tabular foundation model cannot be just “serialize the table into English and feed it to an LLM.”
+- It must encode task priors, small-data learning, and structure-aware inductive bias more directly.
 
 ---
 
-# 路线一与路线二：它们解决了什么？还缺什么？
+# Existing Strategies: Three Main Routes
 
-### 路线一：表格转文本 + 通用 LLM
+### Route 1: Table-to-text
 
-- 优点：能利用列名语义、领域知识和 instruction-following 能力。
-- 优点：解释性和自然语言交互通常更好。
-- 难点：数值精度、上下文长度、重复 token 开销都比较突出。
-- 难点：这条路线很容易把“表格预测”误写成“文本续写”。
+- Serialize columns, values, and task instructions into prompts, then use a general LLM.
+- Representative direction: prompting, instruction tuning, TabLLM-style methods.
 
-### 路线二：专用表格 Transformer
+### Route 2: Specialized tabular transformers
 
-- 优点：更贴近 tabular 结构，可以显式处理列表示和特征交互。
-- 优点：通常比直接 prompt LLM 更适合监督预测。
-- 难点：很多方法仍然依赖逐任务训练，迁移性和“开箱即用”能力有限。
-- 难点：在小样本场景里，单个数据集本身往往不足以支撑强表征学习。
+- Design architectures for column embeddings, categorical features, and row/feature interactions.
+- Representative direction: TabTransformer, SAINT, FT-Transformer.
 
----
+### Route 3: Task-distribution pretraining
 
-# 路线三：把“任务分布”本身预训练成先验
-
-真正稀缺的不是“表格格式”，而是**每个具体任务的标注数据**。  
-如果模型在训练阶段先见过大量不同类型的表格任务，它就可能学到一个可迁移的预测先验。
-
-### 这正是 TabPFN 的出发点
-
-- 不是把一张表训练到收敛，而是把“很多任务”压缩进一个 transformer。
-- 不是测试时再做长时间微调，而是让一次前向传播近似 posterior predictive inference。
-- 不是单纯依赖列名语义，而是直接学习“小样本监督预测”这件事本身。
+- Pretrain not on one table, but on many tasks, so the model learns how to do tabular prediction itself.
+- Representative direction: meta-learning / amortized Bayesian inference / TabPFN.
 
 ---
 
-# TabPFN：为什么它值得重点看
+# Routes 1 and 2: What Do They Solve? What Is Still Missing?
 
-**Nature 论文：** Hollmann, Noah, et al. "Accurate predictions on small data with a tabular foundation model." Nature 637.8045 (2025): 319-326.
+### Route 1: Table-to-text + general LLM
 
-**TabPFN（Tabular Prior-data Fitted Network）** 是一个面向小样本表格预测的 foundation model，  
-可以把“训练集 + 待预测样本”一起作为上下文输入。
+- Strength: can exploit column names, domain knowledge, and instruction-following ability.
+- Strength: often gives strong natural-language explanations.
+- Challenge: numeric precision, context length, and token redundancy become serious issues.
+- Challenge: it can easily turn “tabular prediction” into “text continuation.”
 
-### 它想解决的问题
+### Route 2: specialized tabular transformers
 
-- 很多真实 tabular 任务只有很少标签。
-- 传统流程往往要做大量模型选择和超参数搜索。
-- 我们希望少调参、快推理、同时维持强预测性能。
-
-### 它的关键转向
-
-- 学习对象从“某一个数据集”变成“一个任务分布”。
-- 测试时不再逐任务训练很久，而是直接做 in-context prediction。
-- 目标更接近 Bayesian posterior predictive，而不是普通经验风险最小化。
+- Strength: more faithful to tabular structure and feature interaction.
+- Strength: usually more suitable than prompt-only LLMs for supervised prediction.
+- Challenge: many methods still require per-task training from scratch.
+- Challenge: in small-data settings, one dataset alone often cannot support strong representation learning.
 
 ---
 
-# TabPFN：问题设定
+# Route 3: Pretrain the Task Distribution Itself
 
-### 输入
+What is really scarce is not the table format, but **labeled data for each individual task**.  
+If a model can see many different tabular tasks during pretraining, it may learn a transferable predictive prior.
+
+### This is exactly the motivation behind TabPFN
+
+- Do not train a separate model to convergence for every dataset.
+- Compress many tasks into one transformer.
+- Let a single forward pass approximate posterior predictive inference at test time.
+
+---
+
+# TabPFN: Why Is It Worth Focusing On?
+
+**Nature paper:** Hollmann, Noah, et al. "Accurate predictions on small data with a tabular foundation model." Nature 637.8045 (2025): 319-326.
+
+**TabPFN (Tabular Prior-data Fitted Network)** is a foundation model for small-data tabular prediction.  
+It takes the training set and the query row together as context.
+
+### What problem does it solve?
+
+- Many real tabular tasks have very limited labeled data.
+- Traditional pipelines often require expensive model and hyperparameter search.
+- We want strong performance with minimal tuning and fast inference.
+
+### What is the conceptual shift?
+
+- The learning object changes from one dataset to a distribution over tasks.
+- Test-time prediction becomes in-context inference instead of long per-task optimization.
+- The target becomes close to Bayesian posterior predictive inference.
+
+---
+
+# TabPFN: Problem Setup
+
+### Input
 
 $$
-\mathcal D_{\text{train}}=\{(x_i,y_i)\}_{i=1}^{n},\qquad x_* \text{ 为待预测样本}
+\mathcal D_{\text{train}}=\{(x_i,y_i)\}_{i=1}^{n},\qquad x_* \text{ is the query row}
 $$
 
-- $x_i$ 是训练样本特征，$y_i$ 是训练标签。
-- $x_*$ 是 query row，标签 $y_*$ 对模型不可见。
+- $x_i$ is a training feature vector; $y_i$ is its label.
+- $x_*$ is a new row whose label $y_*$ is hidden from the model.
 
-### 目标
+### Goal
 
 $$
 p(y_* \mid x_*, \mathcal D_{\text{train}})
 $$
 
-- 给定整张训练表和一个新样本，直接输出预测标签分布。
-- 重点不是“生成一段文字”，而是“条件化在支持集上做 supervised prediction”。
+- Given the entire training table and one new row, directly output the predictive label distribution.
+- The model is not generating text; it is doing supervised prediction conditioned on a support set.
 
 ---
 
-# TabPFN：训练与推理机制
+# TabPFN: Training and Inference Mechanism
 
-### 训练阶段
+### Training stage
 
 $$
 \tau \sim p(\tau),\qquad
@@ -2304,19 +2290,19 @@ $$
 \max_\theta\ \mathbb E_{\tau}\big[\log p_\theta(y_* \mid x_*, \mathcal D_{\text{train}})\big]
 $$
 
-- 从宽泛先验中采样大量合成 tabular 任务。
-- 让 transformer 反复学习“看到一批训练点后，怎样预测新点标签”。
+- Sample many synthetic tabular tasks from a broad prior.
+- Train the transformer to repeatedly answer: after seeing support rows, how should I predict the query label?
 
-### 推理阶段
+### Inference stage
 
-- 把训练样本和待预测样本一起送入模型。
-- 模型只看到训练样本的标签，看不到 query 的标签。
-- 一次 forward pass 直接输出 $p(y_* \mid x_*, \mathcal D_{\text{train}})$。
-- 不需要对当前数据集再跑长时间 gradient descent。
+- Feed the training rows and the query row together into the model.
+- The model sees training labels but not the query label.
+- One forward pass outputs $p(y_* \mid x_*, \mathcal D_{\text{train}})$.
+- No long per-task gradient descent is needed at test time.
 
 ---
 
-# TabPFN：整体示意图
+# TabPFN: Visual Overview
 
 <div class="flex justify-center items-center mt-3">
   <img src="/figs/tabpfn.jpg" class="rounded shadow w-4/5" />
@@ -2324,7 +2310,7 @@ $$
 
 ---
 
-# TabPFN：补充视图
+# TabPFN: Additional View
 
 <div class="flex justify-center items-center mt-3">
   <img src="/figs/tabpfn2.jpg" class="rounded shadow w-4/5" />
@@ -2332,46 +2318,46 @@ $$
 
 ---
 
-# TabPFN：它为什么有效？
+# TabPFN: Why Does It Work?
 
-### 原因 1：本质上是任务级元学习
+### Reason 1: task-level meta-learning
 
-- 模型不是记住某张表，而是在许多任务中学会“如何从少量标注样本中归纳规律”。
+- The model does not memorize one table; it learns how to infer from few labeled examples across many tasks.
 
-### 原因 2：近似 amortized Bayesian inference
+### Reason 2: amortized Bayesian inference
 
-- 把原本每个任务都要重新做的 posterior predictive inference，提前压缩进参数里。
+- The expensive per-task posterior predictive computation is compressed into the network parameters.
 
-### 原因 3：特别适合小样本
+### Reason 3: especially useful in small-data regimes
 
-- 当单个数据集太小，不足以支撑复杂训练时，跨任务先验就会变得非常有价值。
-
----
-
-# 从 TabPFN 得到的启发
-
-### 关键收获
-
-- foundation model 的先验不只适用于文本生成，也适用于表格预测。
-- “预训练对象是任务分布”这一点，是 tabular foundation model 的关键转向。
-- 这条路线提供了“少调参 + 快预测 + 强性能”的新可能。
-
-### 边界与后续方向
-
-- TabPFN 的强项主要在小样本、结构化监督预测。
-- 当样本数、特征数或任务形式继续扩大时，还需要新的扩展策略。
-- 这条思路也自然延伸到 time series、decision making 等更广义场景。
+- When one dataset is too small to support heavy training, a cross-task prior becomes extremely valuable.
 
 ---
 
-# SFT = 指令-回答对上的下一词预测
+# Insights from TabPFN
 
-设监督式指令数据为
+### Key takeaways
+
+- Foundation-model priors are not limited to text generation; they can work for tabular prediction.
+- The main shift is to pretrain on a task distribution rather than on one dataset.
+- This opens a path to minimal tuning, fast prediction, and strong performance.
+
+### Boundaries and future directions
+
+- TabPFN is especially strong for small-data structured supervised prediction.
+- Larger sample sizes, larger feature spaces, and broader task families require further extensions.
+- The same idea naturally points toward time-series and decision-making foundation models.
+
+---
+
+# SFT = Next-Token Prediction on instruction-response Pairs
+
+Let the supervised instruction data be
 $$
 \mathcal D_{\text{sft}}=\{(x^{(i)},y^{(i)})\}_{i=1}^{n}.
 $$
 
-对每一对样本，构造序列 $s^{(i)}=[x^{(i)};y^{(i)}]$，并施加回答掩码 $m_t$：
+For each pair, build a sequence $s^{(i)}=[x^{(i)};y^{(i)}]$ and apply a response mask $m_t$:
 $$
 m_t=
 \begin{cases}
@@ -2380,19 +2366,19 @@ m_t=
 \end{cases}
 $$
 
-于是 SFT 优化的就是带掩码的下一词预测：
+Then SFT optimizes masked next-token prediction:
 $$
 \mathcal L_{\text{sft}}(\theta)
 =-\mathbb{E}_{(x,y)\sim\mathcal D_{\text{sft}}}
 \left[\sum_{t} m_t\,\log p_{\theta}(s_t\mid s_{<t})\right].
 $$
 
-- 它本质上仍然是下一词预测。
-- 但监督信号是任务相关的：只有目标回答 token 会对损失产生贡献。
+- It is still next-token prediction.
+- But supervision is task-specific: only target response tokens contribute to loss.
 
 ---
 
-# Pre-training 与 SFT 的区别
+# Difference between Pre-training and SFT
 
 <div class="grid grid-cols-2 gap-6">
 
@@ -2400,23 +2386,23 @@ $$
 
 ## Pre-training
 
-**数据：**海量无标注文本
+**Data:** Massive unlabeled text
 
-**损失：**在**所有 tokens**上计算
+**Loss:** Computed on **all tokens**
 
-**目标：**学习通用语言模式
+**Goal:** Learn general language patterns
 
 </div>
 
 <div>
 
-## Supervised Fine-Tuning（SFT）
+## Supervised Fine-Tuning (SFT)
 
-**数据：**高质量指令-回答对
+**Data:** High-quality instruction-response pairs
 
-**损失：**只在 **assistant responses** 上计算
+**Loss:** Only on **assistant responses**
 
-**目标：**学会遵循指令
+**Goal:** Learn to follow instructions
 
 </div>
 
@@ -2424,7 +2410,7 @@ $$
 
 <div class="mt--2">
 
-## SFT 损失掩码
+## SFT Loss Masking
 
 <div class="flex flex-col gap-4 mt-2">
 
@@ -2498,20 +2484,20 @@ $$
 <div class="flex gap-6 justify-center mt-4 text-sm">
 <div class="flex items-center gap-2">
 <div class="w-8 h-8 bg-red-200 border-2 border-red-400 rounded"></div>
-<span><b>User：</b>输入提示词（不计入损失）</span>
+<span><b>User:</b> Input prompt (ignored in loss)</span>
 </div>
 <div class="flex items-center gap-2">
 <div class="w-8 h-8 bg-green-200 border-2 border-green-400 rounded"></div>
-<span><b>Assistant：</b>目标回答</span>
+<span><b>Assistant:</b> Target response</span>
 </div>
 <div class="flex items-center gap-2">
 <div class="w-8 h-8 bg-blue-300 border-2 border-blue-500 rounded"></div>
-<span><b>Labels：</b>真实 token ID（用于计算损失）</span>
+<span><b>Labels:</b> Actual token IDs (for loss)</span>
 </div>
 </div>
 
 <div class="mt-3 text-xs text-gray-600 text-center">
-`Label = -100` 表示“在损失计算中忽略这个 token”（PyTorch 约定）
+Label = -100 means "ignore this token in loss computation" (PyTorch convention)
 </div>
 
 </div>
@@ -2520,7 +2506,7 @@ $$
 
 ---
 
-# 训练流程
+# Training Pipeline
 
 <style scoped>
 .slidev-code {
@@ -2636,13 +2622,13 @@ name: part-3
 routeAlias: part-3
 ---
 
-# Part 3：面向 LLM 的强化学习
+# Part 3: Reinforcement Learning For LLM
 
 ---
 
 
 
-# Reinforcement Learning（强化学习）
+# Reinforcement Learning
 
 <div class="flex justify-center items-center mt--3">
 <img src="/figs/sdm.png" class="w-4.2/5" />
@@ -2650,7 +2636,7 @@ routeAlias: part-3
 
 ---
 
-# Reinforcement Learning（续）
+# Reinforcement Learning (Cont'd)
 <div class="flex justify-center items-center mt--15">
 <img src="/figs/rl.png" class="w-5/5" />
 </div>
@@ -2662,11 +2648,11 @@ name: rlhf
 routeAlias: rlhf
 ---
 
-# RLHF：基于人类反馈的强化学习
+# RLHF: Reinforcement Learning From Human Feedback
 
 ---
 
-# RLHF 的整体流程
+# Reinforcement learning from human feedback (RLHF)
 
 
 <div class="flex justify-center items-center mt-7">
@@ -2676,47 +2662,47 @@ routeAlias: rlhf
 
 ---
 
-# RLHF 中的奖励学习
+# Reward learning in RLHF
 <div class="flex justify-center items-center mt-7">
 <img src="/figs/reward.png" class="w-5/5" />
 </div>
 
 ---
 
-# 偏好数据示例
+# Preference Data Example
 
-**提示词：** *向一个 10 岁小朋友解释量子计算*
+**Prompt:** *Explain quantum computing to a 10-year-old*
 
 <div class="grid grid-cols-2 gap-4 mt-4">
 
 <div class="p-4 border-2 border-green-500 rounded">
 
-### 回答 A（被选中）✓
+### Response A (Chosen) ✓
 
-"你可以把它想象成一台超级快的电脑，  
-它能同时尝试很多种答案，  
-就像你有好多分身一起做作业  
-一样！"
+"Imagine a super-fast computer that can 
+try many answers at once, like having 
+multiple copies of yourself doing homework 
+simultaneously!"
 
-**为什么被选中：**
-- 语言适合儿童理解
-- 类比形象
-- 语气有吸引力
+**Why chosen:**
+- Age-appropriate language
+- Good analogy
+- Engaging tone
 
 </div>
 
 <div class="p-4 border-2 border-red-500 rounded">
 
-### 回答 B（被拒绝）✗
+### Response B (Rejected) ✗
 
-"量子计算利用叠加态、纠缠等  
-量子力学现象  
-来执行计算……"
+"Quantum computing leverages quantum 
+mechanical phenomena such as superposition 
+and entanglement to perform computations..."
 
-**为什么被拒绝：**
-- 过于技术化
-- 不适合儿童理解
-- 术语过多
+**Why rejected:**
+- Too technical
+- Not age-appropriate
+- Jargon-heavy
 
 </div>
 
@@ -2724,14 +2710,14 @@ routeAlias: rlhf
 
 ---
 
-# RLHF 中的奖励学习（续）
+# Reward learning in RLHF(Cont'd)
 <div class="flex justify-center items-center mt-15">
 <img src="/figs/rewardlearning.png" class="w-5/5" />
 </div>
 
 ---
 
-# BT model（Bradley-Terry 模型）小例子
+# Small example of BT model 
 <div class="flex justify-center items-center mt-5">
 <img src="/figs/btexample.png" class="w-5/5" />
 </div>
@@ -2739,31 +2725,31 @@ routeAlias: rlhf
 ---
 
 
-# RLHF 阶段：Reward Model 训练
+# RLHF Stage: Reward Model Training
 
 <div class="grid grid-cols-2 gap-4">
 
 <div>
 
-## 收集偏好数据
+## Collecting Preferences
 
-1. 给模型一个 prompt
-2. 生成多个回答（A、B）
-3. 由人类选择更好的那个
-4. 构造成对比较数据
+1. Give prompt to model
+2. Generate multiple responses (A, B)
+3. Humans choose better one
+4. Create pairwise comparisons
 
 <div class="space-y-4 text-sm mt-7" >
 </div>
 
 
-## 训练目标
+## Training Objective
 
 $$
 \mathcal{L} = -\mathbb{E}\left[\log\sigma(r(x,y_w) - r(x,y_l))\right]
 $$
 
-- $y_w$：被选中的回答
-- $y_l$：被拒绝的回答
+- $y_w$: chosen response
+- $y_l$: rejected response
 
 
 </div>
@@ -2797,45 +2783,45 @@ def train_reward_model(preferences):
 
 ---
 
-# 算法 I：基于 PPO 的方法
+# Algorithm I: PPO-based approach 
 <div class="text-right text-sm mt--10 mr-20">
-（Proximal Policy Optimization，近端策略优化）
+(Proximal Policy Optimization)
 </div>
 <div class="flex justify-center items-center mt-5">
 <img src="./figs/InstructGPT.png" class="w-4/5" />
 </div>
 <div class="text-right text-sm mt-2 mr-8">
-- 引自 InstructGPT (Ouyang et al., 2022)
+- from InstructGPT (Ouyang et al., 2022)
 </div>
 
 ---
 
-# PPO 训练流程
+# PPO Training Loop 
 
 <div class="grid grid-cols-2 gap-6 mt-4">
 
 <div>
 
-### 关键组件
+### Key Components
 
 <div class="space-y-4 text-sm mt-3" >
 
 #### 1) Policy Model $\pi_\theta$
 
-要更新的 LLM（也就是 “actor”）
+The LLM we update (the "actor")
 
 #### 2) Reward Model $r_{\text{RM}}(x, y)$
 
-给定 prompt $x$，为回答 $y$ 打分
+Scores a response $y$ given prompt $x$
 
 
 #### 3) Value Model $V_\phi(x)$
 
-用于计算 advantage 的基线，从而稳定训练
+The baseline we use to calculate the advantage function to stable training
 
-#### 4) Reference policy $\pi_{\text{ref}}$
+#### 4) Reference policy  $\pi_{\text{ref}}$
 
-通过 KL 惩罚防止 reward hacking / 分布漂移：
+To prevent reward hacking / distribution shift by KL penalty:
 
 <div class="text-xs">
 
@@ -2885,17 +2871,17 @@ def rlhf_training(policy_model,reward_model,value_model,prompts):
 
 ---
 
-# PPO 训练流程（续）
+# PPO Training Loop(Cont'd)
 
 <div class="grid grid-cols-2 gap-6 mt-4">
 
 <div>
 
-## PPO 更新步
+## PPO Step
 
-**核心思想：**改进策略，但**避免过大且破坏性的更新**。
+**Key Idea:** improve the policy, but **avoid large destructive updates**.
 
-**目标函数：**
+**Objective:**
 
 <div class="text-sm">
 
@@ -2905,10 +2891,10 @@ $$
 
 </div>
 
-其中：
-- $r_t = \frac{\pi_\theta(a|s)}{\pi_{old}(a|s)}$（重要性采样比率）
-- $\hat{A}_t \thickapprox Q(s_t, a_t) - V(s_t)$（由 GAE 估计的 advantage）
-- $\epsilon$（clip 参数）
+where:
+- $r_t = \frac{\pi_\theta(a|s)}{\pi_{old}(a|s)}$ (Important sampling ratio)
+- $\hat{A}_t \thickapprox Q(s_t, a_t) - V(s_t)$ (Advantage estimated by GAE)
+- $\epsilon$  (clip parameter)
 
 </div>
 
@@ -2944,15 +2930,15 @@ def ppo_step(policy, value_model, experiences):
 
 ---
 
-# 关于 policy gradient 和 PPO 的几点直觉
+# Some insights about policy gradient and PPO
 
 <div class="text-base">
 
-**原始目标：**
+**Our original objective:**
 
 $$J(\theta) \;=\; \mathbb{E}_{y \sim \pi_\theta(\cdot \mid x)}\big[A(x,y)\big]$$
 
-**我们手里有什么：**一个数据集 $\mathcal{D} = \{x,y\}$，其中 $x \sim q(x), y \sim \pi_\theta(\cdot \mid x)$
+**What we have:** a dataset $\mathcal{D} = \{x,y\}$, where $x \sim q(x), y \sim \pi_\theta(\cdot \mid x)$
 
 <div class="mt-2">
 
@@ -2961,7 +2947,7 @@ $$J(\theta) = \sum_{y} \pi_\theta(y\mid x)\,A(x,y)$$
 $$\nabla_\theta J(\theta) = \sum_{y} \nabla_\theta \pi_\theta(y\mid x)\,A(x,y)$$
 <div class="mt--5">
 
-利用 $\nabla_\theta \pi_\theta(y\mid x) = \pi_\theta(y\mid x)\,\nabla_\theta \log \pi_\theta(y\mid x)$：
+Using $\nabla_\theta \pi_\theta(y\mid x) = \pi_\theta(y\mid x)\,\nabla_\theta \log \pi_\theta(y\mid x)$:
 
 $$\nabla_\theta J(\theta) = \sum_{y} \pi_\theta(y\mid x)\,\nabla_\theta \log \pi_\theta(y\mid x)\,A(x,y)$$
 
@@ -2969,7 +2955,7 @@ $$= \mathbb{E}_{x,y\sim \mathcal{D}}\Big[\nabla_\theta \log \pi_\theta(y\mid x)\
 
 <div class="mt--6">
 
-**代理目标：**
+**Surrogate objective:**
 
 $$J(\theta) = \mathbb{E}_{x,y\sim \mathcal{D}}\Big[\log \pi_\theta(y\mid x)\,A(x,y)\Big]$$
 
@@ -2980,22 +2966,22 @@ $$J(\theta) = \mathbb{E}_{x,y\sim \mathcal{D}}\Big[\log \pi_\theta(y\mid x)\,A(x
 
 ---
 
-# 问题：我们的数据来自旧策略
+# Problem: Our Data Come from an Old Policy
 
 <div class="text-base">
 
-在 PPO 的第 2 步及之后，我们是用一个**冻结快照**策略 $\pi_{\text{old}}$ 来收集轨迹的：
+In PPO step (> 1), we collect trajectories with a **frozen snapshot** policy $\pi_{\text{old}}$:
 
 $$\mathcal{D}_{\text{old}} = \{x,y\}, \text{where } x \sim q(x), y \sim \pi_\text{old}(\cdot \mid x)$$
 
-如果我们*直接*把 off-policy 数据塞进策略梯度估计器里：
+If we *naively* plug off-policy data into the policy gradient estimator:
 
 $$\widehat{g}_{\text{naive}} = \mathbb{E}_{(x,y)\sim \mathcal{D}_{\text{old}}}\Big[\nabla_\theta \log \pi_\theta(y\mid x)\; A(x,y)\Big]$$
 
 <div class="mt-7 p-4 bg-red-50 border-2 border-red-300 rounded-lg">
-<div class="text-red-700 font-bold">⚠️ 这通常会带来<span class="text-xl">偏差</span></div>
+<div class="text-red-700 font-bold">⚠️ This is generally <span class="text-xl">biased</span></div>
 
-因为这里的期望是对 $\pi_{\text{old}}$ 取的，而不是对 $\pi_\theta$ 取的：
+Because the expectation is taken under $\pi_{\text{old}}$ rather than $\pi_\theta$:
 
 $$\widehat{g}_{\text{naive}} \neq \nabla_\theta J(\theta)$$
 </div>
@@ -3006,13 +2992,13 @@ $$\widehat{g}_{\text{naive}} \neq \nabla_\theta J(\theta)$$
 
 ---
 
-# 修正方法：Importance Sampling（重要性采样，IS）
+# Fix: Importance Sampling (IS)
 
 <div class="text-base">
 
-**我们的目标：**用 $\mathcal{D}_{\text{old}}$ 来估计 $\nabla_\theta J(\theta)$
+**What we want:** Use $\mathcal{D}_{\text{old}}$ to estimate $\nabla_\theta J(\theta)$
 
-**关键思路：带重要性权重的梯度：**
+**Key insight — Importance weighted gradient:**
 
 $$
 \begin{aligned}
@@ -3024,7 +3010,7 @@ $$
 \end{aligned}
 $$
 
-**PPO 的代理目标：**
+**PPO surrogate objective:**
 
 $$L(\theta) = \mathbb{E}_{(x,y)\sim \mathcal{D}_{\text{old}}}\left[\frac{ \pi_\theta(y\mid x)}{\pi_{\text{old}}(y\mid x)}\, A(x,y)\right]$$
 
@@ -3039,9 +3025,9 @@ $$L(\theta) = \mathbb{E}_{(x,y)\sim \mathcal{D}_{\text{old}}}\left[\frac{ \pi_\t
 ---
 
 
-# 算法 II：DPO（Direct Preference Optimization，直接偏好优化）
+# Algorithm II: DPO-based approach
 <div class="text-right text-sm mt--10 mr-10">
-（Direct Preference Optimization）
+(Direct Preference Optimization)
 </div>
 <div class="flex justify-center items-center mt-15">
 <img src="/figs/DPO.png" class="w-5/5" />
@@ -3049,11 +3035,11 @@ $$L(\theta) = \mathbb{E}_{(x,y)\sim \mathcal{D}_{\text{old}}}\left[\frac{ \pi_\t
 
 ---
 
-# DPO 的核心洞见
+# Insights of  DPO 
 
 <div class="text-base">
 
-在任意奖励函数 $r(x,y)$、参考模型 $\pi_{\mathrm{ref}}$ 和一般的非参数策略类下，都可以得到下面这个结论。
+Under any reward function $r(x,y)$, reference model $\pi_{\mathrm{ref}}$ and a general non-parametric policy class.
 
 </div>
 
@@ -3074,36 +3060,36 @@ $$
 $$
 \pi^{\star}(y|x)=\frac{1}{Z(x)}\,\pi_{\mathrm{ref}}(y|x)\exp\!\Big(\frac{1}{\beta}r(x,y)\Big), \text{where } Z(x)=\sum_{y}\pi_{\mathrm{ref}}(y|x)\exp\!\Big(\frac{1}{\beta}r(x,y)\Big)
 $$
-它是一个合法的概率分布，因为对所有 $y$ 都有 $\pi^{\star}(y|x)\ge 0$，且 $\sum_y \pi^{\star}(y|x)=1$。
+is a valid probability distribution as $\pi^{\star}(y|x)\ge 0$ for all $y$ and $\sum_y \pi^{\star}(y|x)=1$.
 
 ---
 
-# DPO
+# DPO 
 
 <div class="grid grid-cols-2 gap-6 mt-4">
 
 <div>
 
-### 关键组件
+### Key Components
 
 <div class="space-y-4 text-sm mt-3">
 
 #### 1) Policy Model $\pi_\theta$
 
-我们直接优化的 LLM
+The LLM we optimize directly
 
 #### 2) Reference Model $\pi_{\text{ref}}$
 
-初始 SFT 模型的冻结副本
+Frozen copy of initial SFT model
 
 #### 3) Preference Data
 
-形如 $(x, y_w, y_l)$ 的样本对，其中：
-- $x$：prompt
-- $y_w$：偏好的（chosen）回答
-- $y_l$：被拒绝的回答
+Pairs of $(x, y_w, y_l)$ where:
+- $x$: prompt
+- $y_w$: preferred (chosen) response
+- $y_l$: rejected response
 
-**关键区别：**不再需要单独训练 reward model！
+**Key Difference:** No separate reward model needed!
 
 </div>
 
@@ -3111,15 +3097,15 @@ $$
 
 <div>
 
-### DPO 训练流程
+### DPO Training Loop
 
 <div class="space-y-3 text-sm">
 
-#### 1. 采样偏好对
+#### 1. Sample Preference Pair
 
-从偏好数据集中取出 $(x, y_w, y_l)$
+Get $(x, y_w, y_l)$ from preference dataset
 
-#### 2. 计算隐式奖励
+#### 2. Compute Implicit Rewards
 
 <div class="text-xs">
 
@@ -3127,7 +3113,7 @@ $$r_\theta(x, y) = \beta \log \frac{\pi_\theta(y|x)}{\pi_{\text{ref}}(y|x)} - C(
 
 </div>
 
-#### 3. DPO 损失
+#### 3. DPO Loss
 
 <div class="text-xs">
 
@@ -3135,9 +3121,9 @@ $$\mathcal{L}_{\text{DPO}} = -\mathbb{E}_{(x,y_w,y_l)} \left[\log \sigma\left(\b
 
 </div>
 
-#### 4. 更新策略
+#### 4. Update Policy
 
-对 $\mathcal{L}_{\text{DPO}}$ 做梯度下降，更新 $\pi_\theta$
+Gradient descent on $\mathcal{L}_{\text{DPO}}$ to update $\pi_\theta$
 
 </div>
 
@@ -3147,7 +3133,7 @@ $$\mathcal{L}_{\text{DPO}} = -\mathbb{E}_{(x,y_w,y_l)} \left[\log \sigma\left(\b
 
 ---
 
-# DPO 与 PPO
+# DPO vs PPO
 
 
 <div class="flex justify-center items-center mt-3">
@@ -3156,28 +3142,28 @@ $$\mathcal{L}_{\text{DPO}} = -\mathbb{E}_{(x,y_w,y_l)} \left[\log \sigma\left(\b
 
 ---
 
-# RLHF 的挑战与改进方向
+# RLHF Challenges and Solutions
 
 <div class="grid grid-cols-2 gap-8 mt-4">
 
 <div>
 
-## 挑战
+## Challenges
 
 <div class="space-y-4 text-sm">
 
-#### 1. Reward/Preference Model 的局限
-无法完整刻画所有人类偏好
+#### 1. Reward\Preference Model Limitations
+Can't capture all preferences
 
-#### 2. 训练不稳定
-- PPO 对 reward model 很敏感
-- DPO 对 reference policy 很敏感
+#### 2. Training Instability
+- PPO sensitive to reward model
+- DPO sensitive to reference policy
 
 #### 3. Reward Hacking
-模型会利用 reward model 的漏洞
+Model exploits reward model weaknesses
 
-#### 4. 人类反馈成本高
-往往需要成千上万次比较
+#### 4. Expensive Human Feedback
+Requires thousands of comparisons
 
 
 
@@ -3187,22 +3173,22 @@ $$\mathcal{L}_{\text{DPO}} = -\mathbb{E}_{(x,y_w,y_l)} \left[\log \sigma\left(\b
 
 <div>
 
-## 进阶改进方法
+## Advanced Solutions
 
 <div class="space-y-4 text-sm">
 
-#### VRPO（Variance-Reduced Preference Optimization）
+#### VRPO (Variance-Reduced Preference Optimization)
 **Paper:** *Robust Reinforcement Learning from Human Feedback for Large Language Models Fine-Tuning*
 
-- 用辅助偏好模型来更好刻画人类偏好
-- 同时做方差缩减与策略改进
+- An auxiliary preference model to capture human preferences
+- Variance reduction and policy improvement
 
 
-#### DRPO（Doubly Robust Preference Optimization）
+#### DRPO (Doubly Robust Preference Optimization)
 **Paper:** *Doubly Robust Alignment for Large Language Models*
 
-- 用 doubly robust 的高效估计器做偏好评估
-- 用 doubly robust 的方式做 LLM 偏好优化
+- Dubly robust and efficient estimator for preference evaluation
+- Dubly robust preference optimization for LLM fine-tuning
 
 
 </div>
@@ -3217,41 +3203,41 @@ name: rlvr
 routeAlias: rlvr
 ---
 
-# RLVR：基于可验证奖励的强化学习
+# RLVR: Reinforcement Learning with Verifiable Rewards
 
 ---
 
-# 什么是 RLVR？
+# What is RLVR?
 
 <div class="grid grid-cols-2 gap-6">
 
 <div>
 
-## 动机
+## Motivation
 
-**RLHF 的问题：**
-- 人类偏好带有主观性
-- reward model 可能不准确
-- 正确性难以自动验证
+**Problem with RLHF:**
+- Human preferences are subjective
+- Reward model can be inaccurate
+- Hard to verify correctness
 
-**RLVR 的思路：**
-- 使用客观、可验证的奖励
-- 可以自动验证
-- 有明确 ground truth
-- 更可扩展，也更可靠
+**RLVR Solution:**
+- Use objective, verifiable rewards
+- Automatic verification
+- Ground truth available
+- Scalable and reliable
 
 </div>
 
 <div>
 
-## 核心原则
+## Key Principle
 
-不要问“这好不好”，而要问“这对不对”。
+Instead of "Is this good?" ask "Is this correct?"
 
-**适用场景：**
-- **Code**：跑单元测试 ✓
-- **Math**：检查答案 ✓
-- **Logic**：验证证明 ✓
+**Suitable for:**
+- **Code**: Run unit tests ✓
+- **Math**: Check answer ✓
+- **Logic**: Verify proof ✓
 
 
 $$
@@ -3267,44 +3253,44 @@ $$
 
 ---
 
-# RLVR 在推理任务中的应用
+# RLVR for Reasoning
 <div class="flex justify-center items-center mt-8">
 <img src="/figs/DeepSeek_nature.png" class="w-5/5" />
 </div>
 ---
 
-# 算法：基于 GRPO 的方法
+# Algorithm: GRPO-based approach
 
-## Group Relative Policy Optimization（组相对策略优化）
+## Group Relative Policy Optimization
 
 <div class="grid grid-cols-2 gap-6 mt-6">
 
 <div>
 
-### 动机
+### Motivation
 
-**PPO 的问题：**
-- 额外的 value model / critic 会增加 GPU 显存消耗。
-- 如果 value model 学得不好，advantage 会非常 noisy，导致更新不稳定。
+**Problem with PPO:**
+- a separate value model/critic increases GPU memory.
+- a poorly learned value model makes advantages noisy, destabilizing updates.
 
 
-**GRPO 的做法：**
-- 不再需要 value network
-- 直接使用基于组统计量的 advantage
+**GRPO Solution:**
+- No value network needed
+- Uses group-based advantages
 
 
 </div>
 
 <div>
 
-### 核心想法
+### Key Idea
 
-不是和某个**模型级 baseline**比较，而是在**同一组回答内部**比较：
+Instead of comparing to a baseline **by model**, compare responses **within a group**:
 
-1. 针对同一个 prompt 生成**多个回答**
-2. 用 reward model 给所有回答打分
-3. 用**组统计量**来构造 advantage
-4. 根据相对质量更新策略
+1. Generate **multiple responses** for same prompt
+2. Score all responses with reward model
+3. Use **group statistics** for advantage
+4. Update policy based on relative quality
 
 <div class="text-sm mt-4">
 
@@ -3312,7 +3298,7 @@ $$\hat{A}_i = \frac{r_i - \text{mean}(r_{\text{group}})}{\text{std}(r_{\text{gro
 
 </div>
 
-不再需要单独的 value network！
+No separate value network needed!
 
 </div>
 
@@ -3320,7 +3306,7 @@ $$\hat{A}_i = \frac{r_i - \text{mean}(r_{\text{group}})}{\text{std}(r_{\text{gro
 
 ---
 
-# GRPO 算法
+# GRPO Algorithm
 
 <div class="flex justify-center items-center mt-4">
 <img src="/figs/grpo.png" class="w-4.8/5" />
@@ -3328,12 +3314,12 @@ $$\hat{A}_i = \frac{r_i - \text{mean}(r_{\text{group}})}{\text{std}(r_{\text{gro
 
 ---
 
-# GRPO 与 PPO
+# GRPO vs PPO 
 
 <div class="grid grid-cols-1 gap-4 mt-4">
 
 <div class="p-4 bg-blue-50 border-4 border-blue-300 rounded-lg">
-<div class="text-sm font-semibold text-blue-700 mb-2">PPO 目标函数：</div>
+<div class="text-sm font-semibold text-blue-700 mb-2">PPO Objective:</div>
 <div class="text-sm text-left">
 
 $$
@@ -3355,7 +3341,7 @@ $$
 </div>
 
 <div class="p-4 bg-purple-50 border-4 border-purple-300 rounded-lg">
-<div class="text-sm font-semibold text-purple-700 mb-2">GRPO 目标函数：</div>
+<div class="text-sm font-semibold text-purple-700 mb-2">GRPO Objective:</div>
 <div class="text-xs text-left">
 
 $$
@@ -3383,52 +3369,52 @@ $$
 
 ---
 
-# 此后……已经出现了 100 多种 GxPO 变体
+# Since then.... More than 100 GxPO were developed
 
 <div class="text-xs space-y-2 mt-2">
 
-**Rollout 选择与偏差修正：**
-- **SRPO** (Zhang et al., 2025c)：历史重采样
-- **DAPO** (Yu et al., 2025)：动态采样
-- **Dr.GRPO** (Liu et al., 2025)：缓解长度偏差
-- **OPO** (Hao et al., 2025)：用最优 baseline 降低梯度方差
+**Rollout Selection & Bias Correction:**
+- **SRPO** (Zhang et al., 2025c): history resampling
+- **DAPO** (Yu et al., 2025): dynamic sampling
+- **Dr.GRPO** (Liu et al., 2025): mitigates length bias
+- **OPO** (Hao et al., 2025): optimal baseline to reduce gradient variance
 
-**奖励塑形与 Advantage 估计：**
-- **EMPO** (Zhang et al., 2025b)：完全无监督 / 最小化预测熵
-- **AAPO** (Xiong et al., 2025a)：advantage 动量
-- **BNPO** (Xiao et al., 2025)：通过 Beta 分布自适应归一化奖励
-- **SEED-GRPO** (Chen et al., 2025)：用语义熵根据不确定性缩放更新
-- **GRPO-lead** (Zhang & Zuo, 2025)：结合长度相关精度、显式惩罚和难度感知重加权
+**Reward Shaping & Advantage Estimation:**
+- **EMPO** (Zhang et al., 2025b): fully unsupervised / minimizes predictive entropy
+- **AAPO** (Xiong et al., 2025a): advantage momentum
+- **BNPO** (Xiao et al., 2025): adaptively normalizes rewards via Beta distribution
+- **SEED-GRPO** (Chen et al., 2025): ：uses semantic entropy to scale updates by uncertainty
+- **GRPO-lead** (Zhang & Zuo, 2025): length-dependent accuracy, explicit penalties, difficulty-aware reweighting
 
-**效率导向方法：**
-- **CPPO** (Lin et al., 2025)：剪除低 advantage 的完成结果
-- **S-GRPO** (Dai et al., 2025b)：提前退出以减少冗余
-- **Ada-GRPO** (Wu et al., 2025)：自适应推理格式
-- **GVPO** (Zhang et al., 2025a)：解析式的 KL 约束加权
-- **GRPO-$\lambda$** (Dai et al., 2025a)：在长度惩罚奖励与长度无关奖励之间动态切换，避免坍塌
+**Efficiency-Driven Methods:**
+- **CPPO** (Lin et al., 2025): pruning low-advantage completions
+- **S-GRPO** (Dai et al., 2025b): early exit to cut redundancy
+- **Ada-GRPO** (Wu et al., 2025): adaptive reasoning formats
+- **GVPO** (Zhang et al., 2025a): analytical KL-constrained weighting
+- **GRPO-$\lambda$** (Dai et al., 2025a): ddynamic switch between length-penalized vs length-agnostic rewards to avoid collapse
 
 </div>
 
 ---
 
-# 更多 GxPO 变体（续）
+# More GxPO Variants (Cont'd)
 
 <div class="text-xs space-y-2">
 
-**Rollout 使用方式改进：**
-- **PODS** (Xu et al., 2025)：只在并行 rollout 中最有信息量的子集上训练
-- **RePO** (Li et al., 2025)：通过 replay 检索多样化的 off-policy 样本
-- **RAFT** (Xiong et al., 2025b)：只用正样本训练，但效果可与 GRPO 相当
-- **INTUITOR** (Zhao et al., 2025)：利用模型自身确信度，去掉外部奖励
-- **PRIME** (Cui et al., 2025a)：面向推理任务的可扩展 RL 框架
+**Rollout Usage Improvements:**
+- **PODS** (Xu et al., 2025): trains only on informative subsets of parallel rollouts
+- **RePO** (Li et al., 2025): retrieves diverse off-policy samples via replay
+- **RAFT** (Xiong et al., 2025b): trains solely on positive samples yet rivals GRPO
+- **INTUITOR** (Zhao et al., 2025): eliminates external rewards by using model self-certainty
+- **PRIME** (Cui et al., 2025a): scalable RL framework for reasoning
 
-**面向探索的技术：**
-- **80/20 rule** (Wang et al., 2025)：强调高熵的少数 token
-- **Entropy-based advantage augmentation** (Cheng et al., 2025)：基于熵的 advantage 增强
+**Exploration-Focused Techniques:**
+- **80/20 rule** (Wang et al., 2025): emphasizes high-entropy minority tokens
+- **Entropy-based advantage augmentation** (Cheng et al., 2025)
 
-**数据中心化方法：**
-- **Open-Reasoner-Zero** (Hu et al., 2025)：12.9 万条多样且高质量的课程式样本
-- **Eurus** (Yuan et al., 2024)：大规模对齐数据集与新型奖励建模
+**Data-Centric Approaches:**
+- **Open-Reasoner-Zero** (Hu et al., 2025): 129k diverse, high-quality samples with curriculum learning
+- **Eurus** (Yuan et al., 2024): large-scale alignment dataset and novel reward modeling
 
 </div> 
 
@@ -3438,72 +3424,72 @@ name: future
 routeAlias: future
 ---
 
-# 应用与未来
+# Applications and Future
 
 ---
 
-# 应用领域
+# Application Domains
 
 <div class="grid grid-cols-2 gap-6">
 
 <div>
 
-### 🤖 对话系统
-- 智能客服
-- 个人助手
-- 虚拟陪伴
+### 🤖 Conversational Systems
+- Intelligent customer service
+- Personal assistants
+- Virtual companions
 
-### 💼 办公自动化
-- 邮件撰写
-- 文档摘要
-- 会议转写
+### 💼 Office Automation
+- Email composition
+- Document summarization
+- Meeting transcription
 
-### 🎓 教育
-- 个性化辅导
-- 作业批改
-- 知识问答
+### 🎓 Education
+- Personalized tutoring
+- Homework grading
+- Knowledge Q&A
 
 </div>
 
 <div>
 
-### 💻 编程辅助
-- 代码生成
-- Bug 修复
-- 代码讲解
+### 💻 Programming Assistance
+- Code generation
+- Bug fixing
+- Code explanation
 
-### 🔬 科研助手
-- 文献综述
-- 实验设计
-- 论文写作
+### 🔬 Research Assistant
+- Literature review
+- Experiment design
+- Paper writing
 
-### 🎨 创意产业
-- 内容创作
-- 脚本生成
-- 广告文案
+### 🎨 Creative Industries
+- Content creation
+- Script generation
+- Advertising copywriting
 
 </div>
 
 </div>
 
 ---
-layout: two-cols-header
+layout: two-cols
 ---
-# 真实案例：代码助手
+# Real-world Example: Code Assistant
 
 ::left::
 
-**输入提示词**
+**Input Prompt**
 
 ```markdown
 Write a Python function to
-calculate the n-th Fibonacci number
+calculate the nth Fibonacci number
 using dynamic programming optimization
 ```
 
 ::right::
 
-**LLM 输出**
+**LLM Output**
 
 ```python
 def fibonacci(n):
@@ -3527,50 +3513,50 @@ print(fibonacci(10))  # Output: 55
 
 ---
 
-# 面向任务的 RL 微调
+# Task-Specific RL Fine-Tuning
 
 <div class="text-sm leading-relaxed">
 
-LLM 已经足够强大，能够解决复杂的数学推理和编程任务。
-这带来了一个更广泛的猜想：
-如果一个任务能够用自然语言清楚表达，并具备明确的推理步骤，那么 LLM 也有可能学会解决它。
+LLMs are already strong enough to solve complex math reasoning and coding tasks.
+This suggests a broader hypothesis:
+if a task can be expressed in natural language with clear reasoning steps, LLMs may also solve it.
 
 </div>
 
 <div class="grid grid-cols-3 gap-4 mt-4 text-sm">
   <div class="p-3 rounded border border-blue-200 bg-blue-50">
-    <div class="font-semibold mb-1">强大的基础能力</div>
-    <div>前沿 LLM 已经展现出很强的通用推理能力。</div>
+    <div class="font-semibold mb-1">Strong foundation</div>
+    <div>Frontier LLMs show powerful general reasoning ability.</div>
   </div>
   <div class="p-3 rounded border border-amber-200 bg-amber-50">
-    <div class="font-semibold mb-1">实践中的落差</div>
-    <div>直接 prompting 在领域任务上往往表现不够理想。</div>
+    <div class="font-semibold mb-1">Practical gap</div>
+    <div>Direct prompting often underperforms on domain-specific tasks.</div>
   </div>
   <div class="p-3 rounded border border-emerald-200 bg-emerald-50">
-    <div class="font-semibold mb-1">核心思路</div>
-    <div>用 RL 把 LLM 进一步优化到特定任务目标和奖励上。</div>
+    <div class="font-semibold mb-1">Key idea</div>
+    <div>Use RL to fine-tune LLMs toward task-specific objectives and rewards.</div>
   </div>
 </div>
 
 <div class="mt-3 text-sm leading-relaxed">
 <ul>
-  <li>即使是旗舰模型，不做适配也可能忽略领域约束。</li>
-  <li>RL 微调对齐的是任务层面的指标，而不只是语言流畅性。</li>
-  <li>接下来我们看几个具体应用。</li>
+  <li>Even flagship models can miss domain constraints without adaptation.</li>
+  <li>RL fine-tuning aligns model behavior with task-level metrics, not just fluency.</li>
+  <li>Next, we show concrete applications of this idea.</li>
 </ul>
 </div>
 
 <div class="mt-3 text-xs leading-snug">
-  <div class="font-semibold mb-2">具体例子（下面会展开）</div>
+  <div class="font-semibold mb-2">Specific examples (covered next)</div>
   <div class="grid grid-cols-2 gap-2">
     <div class="p-2 rounded border border-sky-200 bg-sky-50">
-      <b>READER</b>：带显式推理依据的 AI 文本检测。
+      <b>READER</b>: reasoning-enhanced AI-text detection with explicit rationales.
     </div>
     <div class="p-2 rounded border border-indigo-200 bg-indigo-50">
-      <b>TabReason</b>：结合 GRPO 风格优化的 RL 表格预测。
+      <b>TabReason</b>: RL-enhanced tabular prediction with GRPO-style optimization.
     </div>
     <div class="p-2 rounded border border-rose-200 bg-rose-50">
-      <b>Medical application（待讲）</b>：带安全感知奖励设计的临床推理。
+      <b>Medical application (coming)</b>: clinical reasoning with safety-aware reward design.
     </div>
     <div class="p-2 rounded border border-teal-200 bg-teal-50">
       <b>...</b>
@@ -3580,11 +3566,11 @@ LLM 已经足够强大，能够解决复杂的数学推理和编程任务。
 
 ---
 
-# 医学研究
+# Medical Research
 
 <div class="text-sm leading-relaxed mb-2">
-最近的工作表明，RLVR/GRPO 正在成为医学推理中的常见训练范式：
-它能改善领域对齐、结构化输出以及安全感知行为。
+Recent work shows that RLVR/GRPO is becoming a common recipe for medical reasoning:
+it improves domain alignment, structured outputs, and safety-aware behavior.
 </div>
 
 ```mermaid
@@ -3602,57 +3588,57 @@ timeline
 
 <div class="text-xs leading-snug mt-2">
 <ul>
-  <li>趋势：从单任务 QA 逐渐走向多模态、多任务、临床场景驱动的工作流。</li>
-  <li>核心思路：围绕正确性、证据支撑、安全性和格式一致性设计可验证奖励。</li>
+  <li>Trend: from single-task QA toward multimodal, multi-task, and clinically grounded workflows.</li>
+  <li>Core idea: design verifiable rewards for correctness, evidence grounding, safety, and format consistency.</li>
 </ul>
 </div>
 
 ---
 
-# READER 任务：检测人类文本还是 AI 文本
+# READER Task: Detect Human vs AI Text
 
 <div class="text-base mt-2">
-目标：给定一段文本，判断它是 <b>Human（人类撰写）</b> 还是 <b>AI-generated（AI 生成）</b>，并解释<b>原因</b>。
+Goal: given a passage, predict <b>Human</b> or <b>AI-generated</b>, and explain <b>why</b>.
 </div>
 
 <div class="grid grid-cols-2 gap-4 mt-5 text-sm leading-relaxed">
   <div class="p-4 rounded bg-blue-50 border border-blue-200">
-    <div class="font-semibold mb-2">示例 A</div>
+    <div class="font-semibold mb-2">Example A</div>
     <div>
-      “我错过了最后一班火车，于是冒雨走回家，把那天记得的事情都写了下来。”
+      "I missed the last train, so I walked home in the rain and wrote down what I remembered from the day."
     </div>
   </div>
   <div class="p-4 rounded bg-purple-50 border border-purple-200">
-    <div class="font-semibold mb-2">示例 B</div>
+    <div class="font-semibold mb-2">Example B</div>
     <div>
-      “这段叙事凸显了韧性、细腻的情绪颗粒度，以及一种贴近日常人类认知的反思弧线。”
+      "This narrative highlights resilience, emotional granularity, and a reflective arc that aligns with everyday human cognition."
     </div>
   </div>
 </div>
 
 <v-clicks>
 
-- 难点在于：两段文本都可能看起来流畅且连贯。
-- 现有神经检测器在分布内可能很强，但在分布漂移下往往脆弱。
-- READER 不只输出二分类标签，还给出推理痕迹。
+- Hard case: both can look fluent and coherent.
+- Existing neural detectors can be strong in-distribution but fragile under distribution shift.
+- READER adds reasoning traces, not just a binary label.
 
 </v-clicks>
 
 ---
 
-# READER：框架概览
+# READER: Framework Overview
 
 <div class="flex justify-center items-center mt-4">
   <img src="./figs/Reader.jpg" class="rounded shadow w-4/5" />
 </div>
 
 <div class="text-sm opacity-80 mt-3 text-center">
-推理增强型检测器：先生成理由，再输出标签。
+Reasoning-enhanced detector: generate rationale first, then output label.
 </div>
 
 ---
 
-# READER：补充视图
+# READER: Additional Framework View
 
 <div class="flex justify-center items-center mt-4">
   <img src="./figs/Reader2.jpg" class="rounded shadow w-4/5" />
@@ -3663,26 +3649,26 @@ timeline
 
 ---
 
-# READER：READ 数据与关键结果
+# READER: READ Data and Key Results
 
 <div class="grid grid-cols-2 gap-6 mt-3 text-sm leading-relaxed">
 
 <div>
 
-### READ 监督数据
-- 用高能力 LLM 生成结构化推理依据。
-- 只保留高质量推理标注用于训练。
-- 基于这些数据，用 SFT 和 GRPO 训练 READER。
+### READ supervision data
+- Prompt high-capacity LLMs to generate structured rationales.
+- Keep only high-quality reasoning annotations for training.
+- Train READER with SFT and GRPO on this data.
 
 </div>
 
 <div>
 
-### 关键结果
-- READER 只有 **1.5B** 参数。
-- 它优于现有检测器以及基于提示词的前沿 LLM baseline。
-- 报告结果显示其优于 GPT-5.2、Gemini-3-Pro 和 DeepSeek-V3.2。
-- 对比 baseline 的规模大约是它的 **100-1000 倍**。
+### Key results
+- READER has only **1.5B** parameters.
+- It outperforms existing detectors and prompted frontier LLM baselines.
+- Reported stronger results than GPT-5.2, Gemini-3-Pro, and DeepSeek-V3.2.
+- Competing baselines are about **100-1000x** larger.
 
 </div>
 
@@ -3691,7 +3677,7 @@ timeline
 <div class="grid grid-cols-2 gap-4 mt-4">
   <div class="-mt-11">
     <img src="./figs/reader_tab1.jpg" class="rounded shadow w-4/5" />
-    <div class="text-xs opacity-75 mt-1 text-center">主基准结果</div>
+    <div class="text-xs opacity-75 mt-1 text-center">Main benchmark results</div>
   </div>
   <div>
     <img src="./figs/reader_tab2.jpg" class="rounded shadow w-full" />
@@ -3701,36 +3687,36 @@ timeline
 
 ---
 
-# TabReason：结合 RL 的 LLM 表格预测
+# TabReason: RL-Enhanced Tabular Prediction with LLMs
 
 <div class="text-sm leading-relaxed">
 
-**论文：**<b>TabReason: A Reinforcement Learning-Enhanced Reasoning LLM for Explainable Tabular Data Prediction</b> (arXiv:2505.21807v3)
+**Paper:** <b>TabReason: A Reinforcement Learning-Enhanced Reasoning LLM for Explainable Tabular Data Prediction</b> (arXiv:2505.21807v3)
 
 </div>
 
 <div class="grid grid-cols-2 gap-6 mt-4 text-sm leading-relaxed">
   <div>
-    <div class="font-semibold mb-2">任务设定</div>
+    <div class="font-semibold mb-2">Task setting</div>
     <ul>
-      <li>利用金融表格属性预测二元结果。</li>
-      <li>数据集包括信用评分、欺诈检测、困境预测和理赔分析。</li>
-      <li>在高风险场景下，同时需要 <b>accuracy</b> 和 <b>explainability</b>。</li>
+      <li>Use tabular financial attributes to predict binary outcomes.</li>
+      <li>Datasets include credit scoring, fraud detection, distress prediction, and claim analysis.</li>
+      <li>Need both <b>accuracy</b> and <b>explainability</b> in high-stakes scenarios.</li>
     </ul>
   </div>
   <div>
-    <div class="font-semibold mb-2">核心挑战</div>
+    <div class="font-semibold mb-2">Core challenge</div>
     <ul>
-      <li>传统表格模型往往性能强，但可解释性不足。</li>
-      <li>LLM 有解释能力，但在表格预测上通常表现不够好。</li>
-      <li>TabReason 把 LLM 推理与 RL 微调（GRPO）结合起来。</li>
+      <li>Traditional tabular models can be strong but often opaque.</li>
+      <li>LLMs are interpretable but usually underperform on tabular prediction.</li>
+      <li>TabReason combines LLM reasoning with RL fine-tuning (GRPO).</li>
     </ul>
   </div>
 </div>
 
 ---
 
-# TabReason 方法：流程图
+# TabReason Method: Pipeline Figure
 
 <div class="flex justify-center items-center h-[80%]">
   <img src="./figs/tabreason_fig1.jpg" class="rounded shadow max-h-[68vh] w-auto" />
@@ -3740,33 +3726,33 @@ timeline
 
 ---
 
-# TabReason 方法：示例、GRPO 与奖励设计
+# TabReason Method: Example, GRPO, Reward Design
 
 <div class="grid grid-cols-2 gap-6 text-sm leading-relaxed mt-4">
 
 <div>
 
-### 1) 奖励设计
-- TabReason 使用加权奖励信号：
+### 1) Reward design
+- TabReason uses weighted reward signals:
 
 $$R_i = 0.5\,r_{\text{format}} + 0.5\,r_{\text{valid}} + 1.0\,r_{\text{correct}}$$
 
-- 格式奖励：约束结构化推理/输出模板。
-- 有效性奖励：鼓励逻辑一致的推理。
-- 正确性奖励：对最终预测质量影响最大。
+- Format reward: enforce structured reasoning/output template.
+- Validity reward: encourage logically consistent reasoning.
+- Correctness reward: strongest signal for final prediction quality.
 
 </div>
 
 <div>
 
 ### 2) GRPO
-- 计算归一化 advantage：
+- Compute normalized advantage:
 
 $$\hat{A}_i = \frac{R_i - \mu}{\sigma}$$
 
-- 正的 $\hat{A}_i$：提高该输出的概率。
-- 负的 $\hat{A}_i$：压低该输出的概率。
-- 更新时采用 PPO 风格 clipping + KL 正则化。
+- Positive $\hat{A}_i$: increase probability of that output.
+- Negative $\hat{A}_i$: suppress that output.
+- Update with PPO-style clipping + KL regularization.
 
 </div>
 
@@ -3774,25 +3760,25 @@ $$\hat{A}_i = \frac{R_i - \mu}{\sigma}$$
 
 <div class="grid grid-cols-1 gap-6 text-sm leading-relaxed mt-4">
 
-### 3) 简单数值示例
-- 对同一个输入采样 8 个候选输出，得到奖励 $R = [2.0, 1.5, 1.0, 1.0, 0.5, 1.5, 0.5, 0.0]$。
-- 组内均值和标准差：$\mu = 1.00,\ \sigma = 0.612$。
-- 归一化 advantage：$\hat{A}=[1.633,\ 0.816,\ 0,\ 0,\ -0.816,\ 0.816,\ -0.816,\ -1.633]$。
-- 更高的 $\hat{A}$ 会被强化，更低的 $\hat{A}$ 会被抑制。
+### 3) Simple numerical example
+- For one input, sample 8 candidate outputs with repeated rewards: $R = [2.0, 1.5, 1.0, 1.0, 0.5, 1.5, 0.5, 0.0]$.
+- Group mean and std: $\mu = 1.00,\ \sigma = 0.612$.
+- Normalized advantages: $\hat{A}=[1.633,\ 0.816,\ 0,\ 0,\ -0.816,\ 0.816,\ -0.816,\ -1.633]$.
+- Higher $\hat{A}$ outputs are reinforced; lower $\hat{A}$ outputs are suppressed.
 
 </div>
 
 ---
 
 
-# TabReason 在金融基准上的结果
+# TabReason Results on Financial Benchmarks
 
 <div class="mt-3">
     <ul>
-      <li>TabReason 使用了相对较小的 <b>Qwen2.5-1.5B</b> base model。</li>
-      <li>在 <b>7/9</b> 个基准数据集上取得最高 weighted F1。</li>
-      <li>在更均衡的数据集上提升尤其明显（例如 Australian、LendingClub）。</li>
-      <li>这说明经过 RL 调优的推理能同时提升预测质量和可解释性。</li>
+      <li>TabReason uses a relatively small <b>Qwen2.5-1.5B</b> base model.</li>
+      <li>Reported highest weighted F1 on <b>7/9</b> benchmark datasets.</li>
+      <li>Strong gains on more balanced sets (e.g., Australian, LendingClub).</li>
+      <li>Shows that RL-tuned reasoning can improve both prediction quality and interpretability.</li>
     </ul>
 </div>
 
@@ -3803,20 +3789,20 @@ $$\hat{A}_i = \frac{R_i - \mu}{\sigma}$$
 
 ---
 
-# GRPO 理论：梯度是一个 U-Statistic
+# GRPO Theory: Gradient as a U-Statistic
 
 <div class="text-m leading-relaxed mb-2">
 </div>
 
-对固定 prompt $x$ 和 $G$ 个 i.i.d. 的输出-奖励对 $\{(Y^{(g)}, Z^{(g)})\}_{g=1}^G$，
-一般的策略梯度估计器为：
+For a fixed prompt $x$ and $G$ i.i.d. output-reward pairs $\{(Y^{(g)}, Z^{(g)})\}_{g=1}^G$,
+the general policy-gradient estimator is:
 
 $$
 \widehat{g}(x;\theta)=\frac{1}{G}\sum_{g=1}^{G}\nabla_{\theta}\log \pi_{\theta}(Y^{(g)}\mid x)\,[Z^{(g)}-C^{(g)}].
 $$
 
-在 GRPO 中，$C^{(g)}=\bar Z^{(-g)}=(G-1)^{-1}\sum_{k\ne g}Z^{(k)}$。
-可以证明 $\widehat{g}_{\mathrm{GRPO}}(x;\theta)$ 是一个二阶 U-statistic：
+In GRPO, $C^{(g)}=\bar Z^{(-g)}=(G-1)^{-1}\sum_{k\ne g}Z^{(k)}$.
+We can show that $\widehat{g}_{\mathrm{GRPO}}(x;\theta)$ is a second-order U-statistic:
 
 $$
 \widehat{g}_{\mathrm{GRPO}}(x;\theta)
@@ -3830,18 +3816,18 @@ h\!\left((Y^{(i)},Z^{(i)}),(Y^{(j)},Z^{(j)})\right)
 =\frac{1}{2}\Big[\nabla_{\theta}\log\pi_{\theta}(Y^{(i)}\mid x)-\nabla_{\theta}\log\pi_{\theta}(Y^{(j)}\mid x)\Big]\,(Z^{(i)}-Z^{(j)}).
 $$
 
-关键含义：GRPO 的梯度估计器可以用经典 U-statistics 工具分析，例如 Hoeffding 分解、方差/MSE 收敛率和渐近性质。
+Key implication: GRPO’s gradient estimator can be analyzed with classical U-statistics tools (Hoeffding decomposition, variance/MSE rates, asymptotics).
 
 ---
 
-# GRPO 理论：主要结果与启示
+# GRPO Theory: Main Results and Implications
 
 Zhou, Hongyi et al. “Demystifying Group Relative Policy Optimization: Its Policy Gradient is a U-Statistic.” (2026).
 
-- GRPO 的策略梯度估计器是一个**二阶 U-statistic**。
-- 该分析给出了梯度估计误差和策略次优性的有限样本刻画。
-- 它建立了包括 oracle-equivalence 和最优性在内的渐近结果。
-- 还推导出了一个可用于选择组大小的通用 scaling-law 视角。
+- The GRPO policy-gradient estimator is a **second-order U-statistic**.
+- The analysis provides finite-sample error characterization for gradient estimation and policy suboptimality.
+- It establishes asymptotic results including oracle-equivalence and optimality properties.
+- It also derives a universal scaling-law perspective for selecting group size.
 
 <div class="mt-3 flex justify-center">
   <img src="/figs/theory_roadmap.png" class="rounded shadow w-[92%] max-h-[40vh] object-contain" />
@@ -3849,12 +3835,12 @@ Zhou, Hongyi et al. “Demystifying Group Relative Policy Optimization: Its Poli
 
 ---
 
-# GRPO 理论：次优性间隙与定理截图
+# GRPO Theory: Suboptimality Gap and Theorem Snapshots
 
 <div class="text-m leading-relaxed mb-2">
 </div>
 
-定义策略次优性间隙：$\Delta(\pi)=\max _{\theta \in \Theta} \mathbb{E}^{\pi_\theta}(Z)-\mathbb{E}^\pi(Z).$
+Define the policy suboptimality gap: $\Delta(\pi)=\max _{\theta \in \Theta} \mathbb{E}^{\pi_\theta}(Z)-\mathbb{E}^\pi(Z).$
 
 <div class="grid grid-cols-2 gap-3 mt-2">
   <img src="/figs/ustat1.jpg" class="rounded shadow w-full max-h-[24vh] object-contain" />
@@ -3871,56 +3857,56 @@ name: challenges
 routeAlias: challenges
 ---
 
-# LLM 的挑战与未来
+# Challenges and Future of LLM
 
 ---
 
-# 当前挑战
+# Current Challenges
 
 <v-clicks>
 
-### 🎯 技术挑战
-- **Hallucination**：生成不准确或虚假的信息
-- **Reasoning Ability**：复杂逻辑和数学推理仍有限
-- **Long Context**：上下文窗口依然受限
-- **Computational Cost**：训练和推理成本高
+### 🎯 Technical Challenges
+- **Hallucination**: Generating inaccurate or false information
+- **Reasoning Ability**: Limitations in complex logic and math reasoning
+- **Long Context**: Context window limitations
+- **Computational Cost**: High training and inference costs
 
-### ⚖️ 伦理挑战
-- **Bias and Fairness**：训练数据中存在偏见
-- **Privacy Protection**：敏感信息泄露风险
-- **Copyright Issues**：生成内容的归属问题
-- **Security Risks**：恶意使用与滥用
+### ⚖️ Ethical Challenges
+- **Bias and Fairness**: Biases in training data
+- **Privacy Protection**: Risk of sensitive information leakage
+- **Copyright Issues**: Ownership of generated content
+- **Security Risks**: Malicious use and abuse
 
-### 🌍 社会影响
-- **Employment Impact**：部分工作被自动化替代
-- **Education Transformation**：学习方式正在改变
-- **Information Authenticity**：深度伪造内容带来真假难辨问题
+### 🌍 Social Impact
+- **Employment Impact**: Automation of certain jobs
+- **Education Transformation**: Changes in learning methods
+- **Information Authenticity**: Deepfake content
 
 </v-clicks>
 
 ---
 
-# 未来方向
+# Future Directions
 
 <div class="grid grid-cols-2 gap-6">
 
 <div>
 
-### 🚀 技术演进
+### 🚀 Technical Evolution
 
 <v-clicks>
 
 - **Multimodal Fusion**
-  - 文本 + 图像 + 音频 + 视频
+  - Text + Image + Audio + Video
 
 - **Embodied Intelligence**
-  - 与物理世界交互
+  - Interaction with physical world
 
 - **Continual Learning**
-  - 实时更新知识
+  - Real-time knowledge updates
 
 - **Efficient Architectures**
-  - 降低计算成本
+  - Reduce computational costs
 
 </v-clicks>
 
@@ -3928,21 +3914,21 @@ routeAlias: challenges
 
 <div>
 
-### 🎯 应用深化
+### 🎯 Application Deepening
 
 <v-clicks>
 
 - **Domain-Specific Models**
-  - 医疗、法律、金融等领域
+  - Medical, legal, financial domains
 
 - **Personalization**
-  - 适配个人习惯与需求
+  - Adapt to individual habits and needs
 
 - **Agent Systems**
-  - 自主规划与任务执行
+  - Autonomous planning and task execution
 
 - **Human-AI Collaboration**
-  - 增强人类能力
+  - Augment human capabilities
 
 </v-clicks>
 
@@ -3952,14 +3938,14 @@ routeAlias: challenges
 
 ---
 
-# 重要开源项目
+# Important Open Source Projects
 
 <div class="grid grid-cols-2 gap-6 mt-4">
 
 <div class="space-y-4">
 
 <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 border-2 border-blue-300 rounded-lg">
-<div class="text-lg font-bold text-blue-700 mb-3">🤖 模型</div>
+<div class="text-lg font-bold text-blue-700 mb-3">🤖 Models</div>
 <div class="space-y-2 text-sm">
 <div class="flex items-center gap-2">
 <span class="text-blue-600">▸</span>
@@ -3967,11 +3953,11 @@ routeAlias: challenges
 </div>
 <div class="flex items-center gap-2">
 <span class="text-blue-600">▸</span>
-<span><b>Qwen Series</b> - 阿里巴巴</span>
+<span><b>Qwen Series</b> - Alibaba</span>
 </div>
 <div class="flex items-center gap-2">
 <span class="text-blue-600">▸</span>
-<span><b>GLM Series</b> - 智谱 AI</span>
+<span><b>GLM Series</b> - Zhipu AI</span>
 </div>
 <div class="flex items-center gap-2">
 <span class="text-blue-600">▸</span>
@@ -3981,7 +3967,7 @@ routeAlias: challenges
 </div>
 
 <div class="p-4 bg-gradient-to-r from-purple-50 to-purple-100 border-2 border-purple-300 rounded-lg">
-<div class="text-lg font-bold text-purple-700 mb-3">🔧 训练框架</div>
+<div class="text-lg font-bold text-purple-700 mb-3">🔧 Training Frameworks</div>
 <div class="space-y-2 text-sm">
 <div class="flex items-center gap-2">
 <span class="text-purple-600">▸</span>
@@ -3989,7 +3975,7 @@ routeAlias: challenges
 </div>
 <div class="flex items-center gap-2">
 <span class="text-purple-600">▸</span>
-<span><b>Verl</b> - 字节跳动</span>
+<span><b>Verl</b> - ByteDance</span>
 </div>
 </div>
 </div>
@@ -3999,33 +3985,33 @@ routeAlias: challenges
 <div class="space-y-4">
 
 <div class="p-4 bg-gradient-to-r from-green-50 to-green-100 border-2 border-green-300 rounded-lg">
-<div class="text-lg font-bold text-green-700 mb-3">⚡ 推理框架</div>
+<div class="text-lg font-bold text-green-700 mb-3">⚡ Inference Frameworks</div>
 <div class="space-y-2 text-sm">
 <div class="flex items-center gap-2">
 <span class="text-green-600">▸</span>
-<span><b>vLLM</b> - 高效推理</span>
+<span><b>vLLM</b> - Efficient inference</span>
 </div>
 <div class="flex items-center gap-2">
 <span class="text-green-600">▸</span>
-<span><b>llama.cpp</b> - CPU 推理</span>
+<span><b>llama.cpp</b> - CPU inference</span>
 </div>
 </div>
 </div>
 
 <div class="p-4 bg-gradient-to-r from-orange-50 to-orange-100 border-2 border-orange-300 rounded-lg">
-<div class="text-lg font-bold text-orange-700 mb-3">🚀 应用框架</div>
+<div class="text-lg font-bold text-orange-700 mb-3">🚀 Application Frameworks</div>
 <div class="space-y-2 text-sm">
 <div class="flex items-center gap-2">
 <span class="text-orange-600">▸</span>
-<span><b>LangChain</b> - 应用开发</span>
+<span><b>LangChain</b> - Application development</span>
 </div>
 <div class="flex items-center gap-2">
 <span class="text-orange-600">▸</span>
-<span><b>LlamaIndex</b> - 知识检索</span>
+<span><b>LlamaIndex</b> - Knowledge retrieval</span>
 </div>
 <div class="flex items-center gap-2">
 <span class="text-orange-600">▸</span>
-<span><b>Semantic Kernel</b> - 微软</span>
+<span><b>Semantic Kernel</b> - Microsoft</span>
 </div>
 </div>
 </div>
@@ -4039,14 +4025,14 @@ layout: center
 class: text-center
 ---
 
-# 谢谢！
+# Thank You!
 
 <div class="pt-12">
   <span class="text-6xl">🤖</span>
 </div>
 
 <div class="pt-8 text-xl">
-  一起探索 LLM 的无限可能
+  Explore the Infinite Possibilities of LLM
 </div>
 
 <div class="abs-br m-6 flex gap-2">

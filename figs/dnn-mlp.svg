@@ -1,0 +1,85 @@
+<svg width="900" height="420" viewBox="0 0 900 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="8" y="8" width="884" height="404" rx="28" fill="#FCFDFF" stroke="#D9E3F0" stroke-width="2"/>
+
+  <text x="96" y="52" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1F2A44">Input</text>
+  <text x="306" y="52" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1F2A44">Hidden 1</text>
+  <text x="526" y="52" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1F2A44">Hidden 2</text>
+  <text x="748" y="52" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1F2A44">Output</text>
+
+  <g stroke="#C9D5E6" stroke-width="3" stroke-linecap="round" opacity="0.9">
+    <line x1="146" y1="110" x2="352" y2="90"/>
+    <line x1="146" y1="110" x2="352" y2="170"/>
+    <line x1="146" y1="110" x2="352" y2="250"/>
+    <line x1="146" y1="110" x2="352" y2="330"/>
+    <line x1="146" y1="210" x2="352" y2="90"/>
+    <line x1="146" y1="210" x2="352" y2="170"/>
+    <line x1="146" y1="210" x2="352" y2="250"/>
+    <line x1="146" y1="210" x2="352" y2="330"/>
+    <line x1="146" y1="310" x2="352" y2="90"/>
+    <line x1="146" y1="310" x2="352" y2="170"/>
+    <line x1="146" y1="310" x2="352" y2="250"/>
+    <line x1="146" y1="310" x2="352" y2="330"/>
+
+    <line x1="392" y1="90" x2="572" y2="110"/>
+    <line x1="392" y1="90" x2="572" y2="210"/>
+    <line x1="392" y1="90" x2="572" y2="310"/>
+    <line x1="392" y1="170" x2="572" y2="110"/>
+    <line x1="392" y1="170" x2="572" y2="210"/>
+    <line x1="392" y1="170" x2="572" y2="310"/>
+    <line x1="392" y1="250" x2="572" y2="110"/>
+    <line x1="392" y1="250" x2="572" y2="210"/>
+    <line x1="392" y1="250" x2="572" y2="310"/>
+    <line x1="392" y1="330" x2="572" y2="110"/>
+    <line x1="392" y1="330" x2="572" y2="210"/>
+    <line x1="392" y1="330" x2="572" y2="310"/>
+
+    <line x1="612" y1="110" x2="794" y2="150"/>
+    <line x1="612" y1="110" x2="794" y2="270"/>
+    <line x1="612" y1="210" x2="794" y2="150"/>
+    <line x1="612" y1="210" x2="794" y2="270"/>
+    <line x1="612" y1="310" x2="794" y2="150"/>
+    <line x1="612" y1="310" x2="794" y2="270"/>
+  </g>
+
+  <g fill="#6EC1FF" stroke="#1F5AA6" stroke-width="4">
+    <circle cx="110" cy="110" r="36"/>
+    <circle cx="110" cy="210" r="36"/>
+    <circle cx="110" cy="310" r="36"/>
+  </g>
+
+  <g fill="#A7F3D0" stroke="#0F766E" stroke-width="4">
+    <circle cx="352" cy="90" r="40"/>
+    <circle cx="352" cy="170" r="40"/>
+    <circle cx="352" cy="250" r="40"/>
+    <circle cx="352" cy="330" r="40"/>
+  </g>
+
+  <g fill="#FDE68A" stroke="#B45309" stroke-width="4">
+    <circle cx="572" cy="110" r="40"/>
+    <circle cx="572" cy="210" r="40"/>
+    <circle cx="572" cy="310" r="40"/>
+  </g>
+
+  <g fill="#FCA5A5" stroke="#BE123C" stroke-width="4">
+    <circle cx="794" cy="150" r="36"/>
+    <circle cx="794" cy="270" r="36"/>
+  </g>
+
+  <g font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#1F2A44" text-anchor="middle">
+    <text x="110" y="118">x1</text>
+    <text x="110" y="218">x2</text>
+    <text x="110" y="318">x3</text>
+
+    <text x="352" y="98">h1</text>
+    <text x="352" y="178">h2</text>
+    <text x="352" y="258">h3</text>
+    <text x="352" y="338">h4</text>
+
+    <text x="572" y="118">h5</text>
+    <text x="572" y="218">h6</text>
+    <text x="572" y="318">h7</text>
+
+    <text x="794" y="158">y1</text>
+    <text x="794" y="278">y2</text>
+  </g>
+</svg>

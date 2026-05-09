@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "slidev",
     "build": "slidev build --base /LLM_short_course/ --download false",
+    "build:local": "slidev build --download false",
     "export": "slidev export"
   },
   "dependencies": {
